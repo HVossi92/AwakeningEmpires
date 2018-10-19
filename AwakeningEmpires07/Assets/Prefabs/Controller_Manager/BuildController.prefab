@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1797856540982528}
+  m_IsPrefabAsset: 1
+--- !u!1 &1797856540982528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4992688918932484}
+  - component: {fileID: 114506693774701608}
+  m_Layer: 0
+  m_Name: BuildController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4992688918932484
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797856540982528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114506693774701608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797856540982528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b495e1ba7c70373428d02dd00b6d39c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingTileUI: {fileID: 0}
+  shipyardTileUI: {fileID: 0}
+  fleetPrefabP1: {fileID: 1568959929957350, guid: 3873ae184aa2cdb44a0029f4ae1b6c86,
+    type: 2}
+  fleetPrefabP2: {fileID: 1568959929957350, guid: 860b7771555fbeb4097e73a89c769899,
+    type: 2}
+  factoryPrefabP1: {fileID: 1579634511450098, guid: 4812016fab4786f4ea2ab5ac6f9e7f91,
+    type: 2}
+  factoryPrefabP2: {fileID: 1513603403589386, guid: 5f7fbb5e49c3bb444a53b4bcf1a66f17,
+    type: 2}
+  turretPrefabP1: {fileID: 1668799143049598, guid: 148e61e57ce95e9408743c8f9c582651,
+    type: 2}
+  turretPrefabP2: {fileID: 1668799143049598, guid: 501e19dbf9131a34aab2408d06323c7f,
+    type: 2}
+  fighterPrefab: {fileID: 1179644583248976, guid: 46b45b37ba1dbd94e9253c1cb9576300,
+    type: 2}
+  bomberPrefab: {fileID: 1000012912032218, guid: 62eb94f1ff02b4b4fb394fc9f27427f8,
+    type: 2}
+  corvettePrefab: {fileID: 1792937426108474, guid: 2cb25fea02c11ae49bca262f71c1c8bd,
+    type: 2}

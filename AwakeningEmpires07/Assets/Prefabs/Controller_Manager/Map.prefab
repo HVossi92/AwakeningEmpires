@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1082485987168134}
+  m_IsPrefabAsset: 1
+--- !u!1 &1082485987168134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4684379896167224}
+  - component: {fileID: 114663272814724694}
+  m_Layer: 0
+  m_Name: Map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4684379896167224
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1082485987168134}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114663272814724694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1082485987168134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e3323c2d8f1fa419040813ab224e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileTypes:
+  - name: Space
+    tilePrefab: {fileID: 1847468027577154, guid: 912a1fb6bf8f3e34782a89a746be1833,
+      type: 2}
+    isPassable: 1
+    movementCost: 1
+  - name: Asteroids
+    tilePrefab: {fileID: 1043755268087342, guid: 8123727cacef8ee47b14510e7ccc85e7,
+      type: 2}
+    isPassable: 1
+    movementCost: 2
+  - name: ConstructionSlotPlayer1
+    tilePrefab: {fileID: 1854543564633518, guid: 42e42cbd43962bb4eacdf68bc0fd8043,
+      type: 2}
+    isPassable: 1
+    movementCost: 2
+  - name: BlackSpace
+    tilePrefab: {fileID: 1868459692213858, guid: fdb7f1fa74cbd514cb01fce69739e3de,
+      type: 2}
+    isPassable: 0
+    movementCost: 1
+  - name: ConstructionSlotPlayer2
+    tilePrefab: {fileID: 1854543564633518, guid: c20c1beb86bf09649a0e45a2b308f0cd,
+      type: 2}
+    isPassable: 0
+    movementCost: 2
+  - name: TileShipYardPlayer1
+    tilePrefab: {fileID: 1854543564633518, guid: 353e729304bc60040ad30a3763e98eaf,
+      type: 2}
+    isPassable: 1
+    movementCost: 2
+  - name: TileShipYardPlayer1
+    tilePrefab: {fileID: 1854543564633518, guid: 4c63df84df8632e4bb64f8796e2d2c80,
+      type: 2}
+    isPassable: 1
+    movementCost: 2
+  mouseObject: {fileID: 0}
+  homeBaseP1: {fileID: 1486927473885564, guid: 23c24903d2854c24b88101b8e54b14a3, type: 2}
+  homeBaseP2: {fileID: 1337762545128850, guid: 616eed066ecda454bb6ef0ebd6019625, type: 2}

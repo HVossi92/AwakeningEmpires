@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: 6a5f416ea59a48d44857e7adeded7b70
+timeCreated: 1496720316
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Aft
+    100002: Antennas
+    100004: Engine1
+    100006: Engine2
+    100008: Engine3
+    100010: Engine4
+    100012: Engine5
+    100014: Engine6
+    100016: Engine7
+    100018: EngineSection
+    100020: EngineSection_Details
+    100022: Fore
+    100024: MainHull
+    100026: MainHull_Details
+    100028: Mid
+    100030: Modules
+    100032: //RootNode
+    100034: Neck
+    100036: Neck_Details
+    100038: ShieldGenerator
+    400000: Aft
+    400002: Antennas
+    400004: Engine1
+    400006: Engine2
+    400008: Engine3
+    400010: Engine4
+    400012: Engine5
+    400014: Engine6
+    400016: Engine7
+    400018: EngineSection
+    400020: EngineSection_Details
+    400022: Fore
+    400024: MainHull
+    400026: MainHull_Details
+    400028: Mid
+    400030: Modules
+    400032: //RootNode
+    400034: Neck
+    400036: Neck_Details
+    400038: ShieldGenerator
+    2300000: Antennas
+    2300002: Engine1
+    2300004: Engine2
+    2300006: Engine3
+    2300008: Engine4
+    2300010: Engine5
+    2300012: Engine6
+    2300014: Engine7
+    2300016: EngineSection
+    2300018: EngineSection_Details
+    2300020: MainHull
+    2300022: MainHull_Details
+    2300024: Modules
+    2300026: Neck
+    2300028: Neck_Details
+    2300030: ShieldGenerator
+    3300000: Antennas
+    3300002: Engine1
+    3300004: Engine2
+    3300006: Engine3
+    3300008: Engine4
+    3300010: Engine5
+    3300012: Engine6
+    3300014: Engine7
+    3300016: EngineSection
+    3300018: EngineSection_Details
+    3300020: MainHull
+    3300022: MainHull_Details
+    3300024: Modules
+    3300026: Neck
+    3300028: Neck_Details
+    3300030: ShieldGenerator
+    4300000: Modules
+    4300002: MainHull_Details
+    4300004: Antennas
+    4300006: MainHull
+    4300008: Neck_Details
+    4300010: Neck
+    4300012: Engine7
+    4300014: Engine6
+    4300016: Engine5
+    4300018: Engine4
+    4300020: Engine3
+    4300022: Engine2
+    4300024: Engine1
+    4300026: EngineSection
+    4300028: ShieldGenerator
+    4300030: EngineSection_Details
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
