@@ -16,6 +16,9 @@ public class ClickTile : MonoBehaviour {
     private bool buildingOnTileFlag = false;
     private GameObject buildControllerObj;
     private BuildController buildController;
+    private GameObject playerControllerObj;
+    private PlayerController playerController;
+    private int currentMinerals;
 
     private void OnMouseOver()
     {
@@ -29,10 +32,14 @@ public class ClickTile : MonoBehaviour {
     {
         buildControllerObj = GameObject.Find("BuildController");
         buildController = buildControllerObj.GetComponent<BuildController>();
+
+        playerControllerObj = GameObject.Find("PlayerController");
+        playerController = playerControllerObj.GetComponent<PlayerController>();        
     }
 
     private void Update()
     {
+        currentMinerals = playerController.getMineralBalance();
     }
 
     private void GetPlayer()
@@ -73,22 +80,31 @@ public class ClickTile : MonoBehaviour {
     // Build Fleet and Fighter
     public void BuildFighterOnTile(int rotationPlayer = 0)
     {
-        GameObject fighterBuild = BuildController.instance.GetFighterBuild();
-        BuildSpaceShip(rotationPlayer, fighterBuild);
+        if(currentMinerals >= buildController.FighterCost)
+        {
+            GameObject fighterBuild = BuildController.instance.GetFighterBuild();
+            BuildSpaceShip(rotationPlayer, fighterBuild);
+        }        
     }
 
     // Bomber
     public void BuildBomberOnTile(int rotationPlayer = 0)
     {
-        GameObject bomberBuild = BuildController.instance.GetBomberBuild();
-        BuildSpaceShip(rotationPlayer, bomberBuild);
+        if (currentMinerals >= buildController.BomberCost)
+        {
+            GameObject bomberBuild = BuildController.instance.GetBomberBuild();
+            BuildSpaceShip(rotationPlayer, bomberBuild);
+        }
     }
 
     // Corvette
     public void BuildCorvetteOnTile(int rotationPlayer = 0)
     {
-        GameObject corvetteBuild = BuildController.instance.GetCorvetteBuild();
-        BuildSpaceShip(rotationPlayer, corvetteBuild);
+        if (currentMinerals >= buildController.CorvetteCost)
+        {
+            GameObject corvetteBuild = BuildController.instance.GetCorvetteBuild();
+            BuildSpaceShip(rotationPlayer, corvetteBuild);
+        }
     }
 
 
@@ -111,15 +127,21 @@ public class ClickTile : MonoBehaviour {
 
     public void BuildFactoryOnTile()
     {
-        GameObject factoryBuild = BuildController.instance.GetFactoryBuild();
-        fleet = (GameObject)Instantiate(factoryBuild, transform.position, transform.rotation);
-        buildingOnTileFlag = true;
+        if (currentMinerals >= buildController.FactoryCost)
+        {
+            GameObject factoryBuild = BuildController.instance.GetFactoryBuild();
+            fleet = (GameObject)Instantiate(factoryBuild, transform.position, transform.rotation);
+            buildingOnTileFlag = true;
+        }
     }
 
     public void BuildTurretOnTile()
     {
-        GameObject turretBuild = BuildController.instance.GetTurretBuild();
-        fleet = (GameObject)Instantiate(turretBuild, transform.position, transform.rotation);
-        buildingOnTileFlag = true;
+        if (currentMinerals >= buildController.TurretCost)
+        {
+            GameObject turretBuild = BuildController.instance.GetTurretBuild();
+            fleet = (GameObject)Instantiate(turretBuild, transform.position, transform.rotation);
+            buildingOnTileFlag = true;
+        }
     }
 }

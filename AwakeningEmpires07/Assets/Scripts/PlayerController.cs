@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour {
         }
         else if (activePlayer == 2)
         {
-            return mineralsP1;
+            return mineralsP2;
         }
         else
         {

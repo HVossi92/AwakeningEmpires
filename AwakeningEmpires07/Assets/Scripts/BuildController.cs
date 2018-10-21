@@ -29,18 +29,23 @@ public class BuildController : MonoBehaviour {
     private GameObject bomberBuild;
     private GameObject corvetteBuild;
 
+    public GameObject playerControllerObj;
+    private PlayerController playerController;
+
     private int fleetCountP1 = 1;
     private int fleetCountP2 = 1;
     private string fleetNameP1 = "Fleet_P1_";
     private string fleetNameP2 = "Fleet_P2_";
 
-    private int factoryCost = 25;
-    private int turretCost = 50;
-    private int fighterCost = 25;
-    private int bomberCost = 50;
-    private int corvetteCost = 75;
+    private int _factoryCost = 25;
+    private int _turretCost = 50;
+    private int _fighterCost = 25;
+    private int _bomberCost = 50;
+    private int _corvetteCost = 75;
 
     private ClickTile selectedTile;
+
+    private int currentMinerals;
 
     private void Awake()
     {
@@ -63,11 +68,40 @@ public class BuildController : MonoBehaviour {
         fighterBuild = fighterPrefab;
         bomberBuild = bomberPrefab;
         corvetteBuild = corvettePrefab;
+
+        playerController = playerControllerObj.GetComponent<PlayerController>();
     }
 
     private void Update()
     {
         GetPlayer();
+        currentMinerals = playerController.getMineralBalance();
+    }
+
+    // Setters for Building Costs
+    public int FactoryCost
+    {
+        get { return _factoryCost; }
+    }
+
+    public int TurretCost
+    {
+        get { return _turretCost; }
+    }
+
+    public int FighterCost
+    {
+        get { return _fighterCost; }
+    }
+
+    public int BomberCost
+    {
+        get { return _bomberCost; }
+    }
+
+    public int CorvetteCost
+    {
+        get { return _corvetteCost; }
     }
 
     // Providing the builds
@@ -88,16 +122,19 @@ public class BuildController : MonoBehaviour {
 
     public GameObject GetFighterBuild()
     {
-        return fighterBuild;
+     playerController.mineralExpense(_fighterCost);
+     return fighterBuild;
     }
 
     public GameObject GetBomberBuild()
     {
+        playerController.mineralExpense(_bomberCost);
         return bomberBuild;
     }
 
     public GameObject GetCorvetteBuild()
     {
+        playerController.mineralExpense(_corvetteCost);
         return corvetteBuild;
     }
 
@@ -105,10 +142,12 @@ public class BuildController : MonoBehaviour {
     {
         if (activePlayer == 1)
         {
+            playerController.mineralExpense(_factoryCost);
             return factoryBuildP1;
         }
         else //if(activePlayer == 2)
         {
+            playerController.mineralExpense(_factoryCost);
             return factoryBuildP2;
         }
     }
@@ -117,10 +156,12 @@ public class BuildController : MonoBehaviour {
     {
         if (activePlayer == 1)
         {
+            playerController.mineralExpense(_turretCost);
             return turretBuildP1;
         }
         else //if(activePlayer == 2)
         {
+            playerController.mineralExpense(_turretCost);
             return turretBuildP2;
         }
     }

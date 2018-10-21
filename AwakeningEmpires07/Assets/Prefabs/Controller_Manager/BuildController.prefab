@@ -71,3 +71,4 @@ MonoBehaviour:
     type: 2}
   corvettePrefab: {fileID: 1792937426108474, guid: 2cb25fea02c11ae49bca262f71c1c8bd,
     type: 2}
+  playerControllerObj: {fileID: 0}
