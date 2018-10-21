@@ -144,4 +144,16 @@ public class ClickTile : MonoBehaviour {
             buildingOnTileFlag = true;
         }
     }
+
+    public void BuildSolarOnTile()
+    {
+        if (currentMinerals >= buildController.SolarCost)
+        {
+            GameObject solarBuild = BuildController.instance.GetSolarBuild();
+            Vector3 solarPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+            Quaternion solarRot = Quaternion.Euler(-90f, 0, 0);
+            fleet = (GameObject)Instantiate(solarBuild, solarPosition, solarRot);
+            buildingOnTileFlag = true;
+        }
+    }
 }

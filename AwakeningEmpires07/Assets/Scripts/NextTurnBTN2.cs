@@ -23,7 +23,7 @@ public class NextTurnBTN2 : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-     //   print(activePlayer);
+         // print("AP" + activePlayer);
 	}
 
     private void OnMouseDown()

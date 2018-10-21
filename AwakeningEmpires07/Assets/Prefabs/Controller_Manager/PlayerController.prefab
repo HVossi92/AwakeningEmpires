@@ -52,4 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTurnText: {fileID: 0}
+  mineralsTxtP1: {fileID: 0}
+  minearlsTxtP2: {fileID: 0}
+  energyTxtP1: {fileID: 0}
+  energyTxtP2: {fileID: 0}
   nextTurnBtn2: {fileID: 0}

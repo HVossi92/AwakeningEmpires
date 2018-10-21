@@ -65,6 +65,10 @@ MonoBehaviour:
     type: 2}
   turretPrefabP2: {fileID: 1668799143049598, guid: 501e19dbf9131a34aab2408d06323c7f,
     type: 2}
+  solarPrefabP1: {fileID: 1695018308175174, guid: 15843ac4d68072e4d82a38d89e6f9a23,
+    type: 2}
+  solarPrefabP2: {fileID: 1016063015491514, guid: d8b01e8e65c349849bfee246b1e66e26,
+    type: 2}
   fighterPrefab: {fileID: 1179644583248976, guid: 46b45b37ba1dbd94e9253c1cb9576300,
     type: 2}
   bomberPrefab: {fileID: 1000012912032218, guid: 62eb94f1ff02b4b4fb394fc9f27427f8,

@@ -65,8 +65,9 @@ public class MouseManager : MonoBehaviour {
             }
             else { 
 
-                 GetPlayer();
+                GetPlayer();
                 int playerNumber = (int) char.GetNumericValue(hoverObject.name[hoverObject.name.Length - 8]);
+          
                 int playerFleet = 0;
 
                 if (hoverObject.name.Contains("_P1_") && hoverObject.name.Contains("Fleet"))
@@ -95,6 +96,11 @@ public class MouseManager : MonoBehaviour {
             {
                 clickTile = selectedObject.GetComponent<ClickTile>();
                 clickTile.BuildTurretOnTile();
+            }
+            else if (hitObject.name == "BTN_Solar")
+            {
+                clickTile = selectedObject.GetComponent<ClickTile>();
+                clickTile.BuildSolarOnTile();
             }
             else if (hitObject.name == "BTN_Fighter")
             {

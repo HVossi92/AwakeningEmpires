@@ -15,6 +15,8 @@ public class BuildController : MonoBehaviour {
     public GameObject factoryPrefabP2;
     public GameObject turretPrefabP1;
     public GameObject turretPrefabP2;
+    public GameObject solarPrefabP1;
+    public GameObject solarPrefabP2;
     public GameObject fighterPrefab;
     public GameObject bomberPrefab;
     public GameObject corvettePrefab;
@@ -25,6 +27,8 @@ public class BuildController : MonoBehaviour {
     private GameObject factoryBuildP2;
     private GameObject turretBuildP1;
     private GameObject turretBuildP2;
+    private GameObject solarBuildP1;
+    private GameObject solarBuildP2;
     private GameObject fighterBuild;
     private GameObject bomberBuild;
     private GameObject corvetteBuild;
@@ -39,6 +43,7 @@ public class BuildController : MonoBehaviour {
 
     private int _factoryCost = 25;
     private int _turretCost = 50;
+    private int _solarCost = 25;
     private int _fighterCost = 25;
     private int _bomberCost = 50;
     private int _corvetteCost = 75;
@@ -65,6 +70,8 @@ public class BuildController : MonoBehaviour {
         factoryBuildP2 = factoryPrefabP2;
         turretBuildP1 = turretPrefabP1;
         turretBuildP2 = turretPrefabP2;
+        solarBuildP1 = solarPrefabP1;
+        solarBuildP2 = solarPrefabP2;
         fighterBuild = fighterPrefab;
         bomberBuild = bomberPrefab;
         corvetteBuild = corvettePrefab;
@@ -87,6 +94,11 @@ public class BuildController : MonoBehaviour {
     public int TurretCost
     {
         get { return _turretCost; }
+    }
+
+    public int SolarCost
+    {
+        get { return _solarCost; }
     }
 
     public int FighterCost
@@ -163,6 +175,20 @@ public class BuildController : MonoBehaviour {
         {
             playerController.mineralExpense(_turretCost);
             return turretBuildP2;
+        }
+    }
+
+    public GameObject GetSolarBuild()
+    {
+        if (activePlayer == 1)
+        {
+            playerController.mineralExpense(_solarCost);
+            return solarBuildP1;
+        }
+        else //if(activePlayer == 2)
+        {
+            playerController.mineralExpense(_solarCost);
+            return solarBuildP2;
         }
     }
 
