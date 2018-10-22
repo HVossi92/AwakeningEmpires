@@ -15,7 +15,8 @@ public class Fleet : MonoBehaviour {
     private int nextGameRound;
     public int fleetOfPlayer;
     public GameObject mouseObj;
-    private MouseManager mouseManager;    
+    private MouseManager mouseManager;
+    private bool postAction = false;
 
     public List<Node> currentPath = null;   
     float remainingMovement;
@@ -34,14 +35,18 @@ public class Fleet : MonoBehaviour {
     }
 
     #region -------------------------- ||| Fleet Collision ||| ----------------------------------
+    //Fleet
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name.StartsWith("Fleet"))
+        string curFleetName = gameObject.name;
+        string colFleetName = col.gameObject.name;
+
+        if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Fleet") && !postAction)
         {
             // Get Number of this fleet
             string curFleet;
             int curFleetNum;
-            if (gameObject.name.Length < 18)
+            if (curFleetName.Length < 18)
             {
                 curFleet = gameObject.name.Substring(gameObject.name.Length - 8);
                 curFleet = curFleet.Remove(1);
@@ -57,7 +62,7 @@ public class Fleet : MonoBehaviour {
             // Get number of colliding fleet
             string colFleet;
             int colFleetNum;
-            if (col.gameObject.name.Length < 18)
+            if (colFleetName.Length < 18)
             {
                 colFleet = col.gameObject.name.Substring(col.gameObject.name.Length - 8);
                 colFleet = colFleet.Remove(1);
@@ -69,33 +74,54 @@ public class Fleet : MonoBehaviour {
                 colFleet = colFleet.Remove(2);
                 colFleetNum = Int32.Parse(colFleet);
             }
-
-            // Since I only want to destroy one fleet, this will only take action for the fleet with the lower number in the unity Hierachy (maybe change it to a private in inside the fleet script?)
-            if(curFleetNum < colFleetNum)
+            // Friendly Fleets or enemy Fleets
+            if ((curFleetName.Contains("_P1_") && colFleetName.Contains("_P1_")) || (curFleetName.Contains("_P2_") && colFleetName.Contains("_P2_")))
             {
-                GameObject shipHolder = gameObject.transform.GetChild(1).gameObject;
-                GameObject shipChild;
-                GameObject[] shipChildren = new GameObject[50];
-
-                // loop trhough Children and put them into an array (direclty moving them into another parent will change the childCount and fuck up
-                for (int i = 0; i < shipHolder.transform.childCount; i++)
+                // Friendly Fleets merge
+                // Since I only want to destroy one fleet, this will only take action for the fleet with the lower number in the unity Hierachy (maybe change it to a private in inside the fleet script?)
+                if (curFleetNum < colFleetNum)
                 {
-                    shipChild = shipHolder.transform.GetChild(i).gameObject;
-                    shipChildren[i] = shipChild;
-                }
+                    GameObject shipHolder = gameObject.transform.GetChild(1).gameObject;
+                    GameObject shipChild;
+                    GameObject[] shipChildren = new GameObject[50];
 
-                // while loop through the shipChildren Array and move everyone into the new fleet
-                int x = 0;
-                while(shipHolder.transform.childCount > 0)
+                    // loop trhough Children and put them into an array (direclty moving them into another parent will change the childCount and fuck up
+                    for (int i = 0; i < shipHolder.transform.childCount; i++)
+                    {
+                        shipChild = shipHolder.transform.GetChild(i).gameObject;
+                        shipChildren[i] = shipChild;
+                    }
+
+                    // while loop through the shipChildren Array and move everyone into the new fleet
+                    int x = 0;
+                    while (shipHolder.transform.childCount > 0)
+                    {
+                        shipChildren[x].transform.parent = col.transform.GetChild(1);
+                        shipChildren[x].transform.position = col.transform.GetChild(1).transform.position;
+                        x++;
+                    }
+
+                    // All ships have been moved into the new fleet, destroy the old one
+                    Destroy(gameObject);
+                }
+            }
+            else // Enemy Fleets, engage in combat
+            {
+                string victorP = "P1"; // Placeholder
+                print("COMBAT!");
+                if (!curFleetName.Contains(victorP))
                 {
-                    shipChildren[x].transform.parent = col.transform.GetChild(1);
-                    shipChildren[x].transform.position = col.transform.GetChild(1).transform.position;
-                    x++;
+                    //Destroy(gameObject);
+                    currentPath = null;
+                    postAction = true;
+                    Vector3 target = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);                    
+                    transform.position = Vector3.MoveTowards(transform.position, target, 1);
                 }
-
-                // All ships have been moved into the new fleet, destroy the old one
-                Destroy(gameObject);
-            }                       
+                else
+                {
+                    currentPath = null;
+                }
+            }
         }
     }
     #endregion -------------------------- ||| Fleet Collision ||| ----------------------------------
@@ -152,8 +178,11 @@ public class Fleet : MonoBehaviour {
                 return;
             }
 
-            if (remainingMovement <= 0)
-                return;
+        if (remainingMovement <= 0)
+        {
+            return;
+        }
+                
 
             transform.position = map.TileCoordToWorldCoord(tileX, tileZ); // Update Unity World pos
 
