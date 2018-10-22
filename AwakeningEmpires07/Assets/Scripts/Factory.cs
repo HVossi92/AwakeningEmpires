@@ -6,25 +6,32 @@ public class Factory : PlayerBuilding {
     
     private int mineralOutput = 50;
     private bool factoryFlag = true;
-
 	// Use this for initialization
 	void Start () {
+        eneryConsumption = 50;
+        BuildingStartInit();
+        DrainEnergy(eneryConsumption);
     }
 	
 	// Update is called once per frame
-	void Update () {
-        print(activePlayer);
-        print(ofPlayer);
+	void Update ()
+    {
+        BuildingUpdateInit();
+        EarnMinearlsCheck();
+    }
+
+    private void EarnMinearlsCheck()
+    {
         if (ofPlayer == activePlayer && factoryFlag && currentGameRound > gameRound + 1)
         {
             EarnMinerals();
             factoryFlag = false;
         }
-        else if(ofPlayer != activePlayer && !factoryFlag)
+        else if (ofPlayer != activePlayer && !factoryFlag)
         {
             factoryFlag = true;
         }
-	}
+    }
 
     private void EarnMinerals()
     {

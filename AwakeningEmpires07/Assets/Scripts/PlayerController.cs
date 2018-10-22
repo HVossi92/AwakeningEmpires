@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
     private int mineralsP2 = 25;
     private int energyP1 = 0;
     private int energyP2 = 0;
+    private int mineralTick = 100;
+    private int eneryPenalty = 2;
 
     // Use this for initialization
     void Start () {
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour {
         SetText();
     }
 
+    // Updates only at new turn (gets called from NextTurnBtn2
     public void CallUpdates()
     {
         GetPlayer();
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour {
         gameRound = nextTurnBtn2.gameRound;
     }
 
+    // Sets UI Player relevant Text
     private void SetText()
     {
         playerTurnText.text = "Player: " + activePlayer + "\nGameround " + gameRound;
@@ -52,15 +56,25 @@ public class PlayerController : MonoBehaviour {
         minearlsTxtP2.text = "Mienrals P2: " + mineralsP2.ToString();
     }
 
-    // Minerals
+    // Resources
     private void PlayerMineralsRoundTick()
     {
         if(activePlayer == 1)
         {
-            mineralsP1 += 100;
+            if (energyP1 < 0)
+            {
+                mineralTick /= eneryPenalty;
+            }
+
+            mineralsP1 += mineralTick;
         }else if(activePlayer == 2)
         {
-            mineralsP2 += 100;
+            if (energyP2 < 0)
+            {
+                mineralTick /= eneryPenalty;
+            }
+
+            mineralsP2 += mineralTick;
         }
     }
 
@@ -102,10 +116,20 @@ public class PlayerController : MonoBehaviour {
     {
         if (activePlayer == 1)
         {
+            if (energyP1 < 0)
+            {
+                n /= eneryPenalty;
+            }
+
             mineralsP1 += n;
         }
         else if (activePlayer == 2)
         {
+            if (energyP2 < 0)
+            {
+                n /= eneryPenalty;
+            }
+
             mineralsP2 += n;
         }
     }
@@ -113,11 +137,11 @@ public class PlayerController : MonoBehaviour {
     public void energyIncome(int n)
     {
         if (activePlayer == 1)
-        {
+        {     
             energyP1 += n;
         }
         else if (activePlayer == 2)
-        {
+        {    
             energyP2 += n;
         }
     }

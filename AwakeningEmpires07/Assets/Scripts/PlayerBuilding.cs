@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class PlayerBuilding : MonoBehaviour
 {
-    public GameObject playerControllerObj;
-    public PlayerController playerController;
-    public GameObject NextTurnBTN2Obj;
-    public NextTurnBTN2 nextTurnBTN2;
-    public int ofPlayer;
-    public int activePlayer;
-    public int gameRound;
-    public int currentGameRound;
+    protected GameObject playerControllerObj;
+    protected PlayerController playerController;
+    protected GameObject NextTurnBTN2Obj;
+    protected NextTurnBTN2 nextTurnBTN2;
+    protected int ofPlayer;
+    protected int activePlayer;
+    protected int gameRound;
+    protected int currentGameRound;
+    protected int eneryConsumption;
 
-    // Use this for initialization
-    void Start()
+    protected void BuildingStartInit()
     {
         playerControllerObj = GameObject.Find("PlayerController");
         playerController = playerControllerObj.GetComponent<PlayerController>();
@@ -24,11 +24,14 @@ public class PlayerBuilding : MonoBehaviour
         gameRound = nextTurnBTN2.gameRound;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void BuildingUpdateInit()
     {
-        print(activePlayer);
         activePlayer = nextTurnBTN2.activePlayer;
         currentGameRound = nextTurnBTN2.gameRound;
+    }
+
+    protected void DrainEnergy(int n)
+    {
+        playerController.energyExpense(n);
     }
 }

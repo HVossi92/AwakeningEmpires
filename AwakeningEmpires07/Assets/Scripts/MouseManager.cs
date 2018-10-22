@@ -67,23 +67,19 @@ public class MouseManager : MonoBehaviour {
 
                 GetPlayer();
                 int playerNumber = (int) char.GetNumericValue(hoverObject.name[hoverObject.name.Length - 8]);
-          
-                int playerFleet = 0;
 
-                if (hoverObject.name.Contains("_P1_") && hoverObject.name.Contains("Fleet"))
+                if (hoverObject.name.Contains("_P1_") && hoverObject.name.Contains("Fleet") && activePlayer == 1)
                 {
-                    playerFleet = 1;
+                    CommandBatchSelectObj();
                 }
-                else if (hoverObject.name.Contains("_P2") && hoverObject.name.Contains("Fleet"))
+                else if (hoverObject.name.Contains("_P2") && hoverObject.name.Contains("Fleet") && activePlayer == 2)
                 {
-                    playerFleet = 2;
+                    CommandBatchSelectObj();
                 }
 
-                if (playerFleet != 0 || playerNumber == activePlayer)
+                if ((playerNumber == activePlayer) && !hoverObject.name.Contains("Fleet"))
                 {
-                    ClearSelectedSelection();
-                    selectedObject = hoverObject;
-                    SelectedObjects();
+                    CommandBatchSelectObj();
                 }
             }
 
@@ -142,8 +138,15 @@ public class MouseManager : MonoBehaviour {
         }
     }
 
-        // Hover over objects to get a 'light up', but no actual selection
-        void HoverObject(GameObject obj)
+    private void CommandBatchSelectObj()
+    {
+        ClearSelectedSelection();
+        selectedObject = hoverObject;
+        SelectedObjects();
+    }
+
+    // Hover over objects to get a 'light up', but no actual selection
+    void HoverObject(GameObject obj)
     {  
         hoverObject = obj; 
         if(hoverObject == selectedObject)
