@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65438304650519660}
   - component: {fileID: 54871034512094056}
   m_Layer: 0
-  m_Name: FleetP2
+  m_Name: Fleet_P2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

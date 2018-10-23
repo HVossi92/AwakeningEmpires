@@ -21,6 +21,9 @@ public class Fleet : MonoBehaviour {
     public List<Node> currentPath = null;   
     float remainingMovement;
 
+    GameObject shipHolder;
+    GameObject[] shipChildren;
+
     public virtual int movementSpeed()
     {
         return 2;
@@ -80,17 +83,8 @@ public class Fleet : MonoBehaviour {
                 // Friendly Fleets merge
                 // Since I only want to destroy one fleet, this will only take action for the fleet with the lower number in the unity Hierachy (maybe change it to a private in inside the fleet script?)
                 if (curFleetNum < colFleetNum)
-                {
-                    GameObject shipHolder = gameObject.transform.GetChild(1).gameObject;
-                    GameObject shipChild;
-                    GameObject[] shipChildren = new GameObject[50];
-
-                    // loop trhough Children and put them into an array (direclty moving them into another parent will change the childCount and fuck up
-                    for (int i = 0; i < shipHolder.transform.childCount; i++)
-                    {
-                        shipChild = shipHolder.transform.GetChild(i).gameObject;
-                        shipChildren[i] = shipChild;
-                    }
+                {                    
+                    ShipChildrenArray(out shipHolder, out shipChildren);
 
                     // while loop through the shipChildren Array and move everyone into the new fleet
                     int x = 0;
@@ -109,21 +103,82 @@ public class Fleet : MonoBehaviour {
             {
                 string victorP = "P1"; // Placeholder
                 print("COMBAT!");
-                if (!curFleetName.Contains(victorP))
+                currentPath = null;
+
+                if (curFleetName.Contains(victorP))
                 {
-                    //Destroy(gameObject);
-                    currentPath = null;
-                    postAction = true;
-                    Vector3 target = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);                    
-                    transform.position = Vector3.MoveTowards(transform.position, target, 1);
+                    
                 }
                 else
                 {
-                    currentPath = null;
+                    //Destroy(gameObject);
+                    postAction = true;
+
+                    switch (victorP)
+                    {
+                        case "P1":
+                            tileX += 1;
+                            break;
+                        case "P2":
+                            tileX -= 1;
+                            break;
+                        default:
+                            tileZ += 1;
+                            break;
+                    }
+
+                    ShipChildrenArray(out shipHolder, out shipChildren);
+
+                    // while loop through the shipChildren Array and move everyone into the new fleet
+                    int desFighter = 2;
+                    int desBomber = 1;
+                    int desCorvette = 1;
+                    print(shipHolder.transform.childCount);
+                    for (int i = 0; i <= shipHolder.transform.childCount; i++)
+                    {
+                        if(shipChildren[i].transform.name.Contains("Fighter") && desFighter > 0)
+                        {
+                            desFighter--;
+                            Destroy(shipChildren[i]);
+                        }else if (shipChildren[i].transform.name.Contains("Bomber") && desBomber > 0)
+                        {
+                            desBomber--;
+                            Destroy(shipChildren[i]);
+                        }
+                        else if (shipChildren[i].transform.name.Contains("Corvette") && desCorvette > 0)
+                        {
+                            desCorvette--;
+                            Destroy(shipChildren[i]);
+                        }
+                        print(shipHolder.transform.childCount);
+                    }
+                    int x = 0;
+                    while (shipHolder.transform.childCount > 0)
+                    {
+                        shipChildren[x].transform.parent = col.transform.GetChild(1);
+                        shipChildren[x].transform.position = col.transform.GetChild(1).transform.position;
+                        x++;
+                    }
+
                 }
             }
         }
     }
+
+    private void ShipChildrenArray(out GameObject shipHolder, out GameObject[] shipChildren)
+    {
+        shipHolder = gameObject.transform.GetChild(1).gameObject;
+        GameObject shipChild;
+        shipChildren = new GameObject[50];
+
+        // loop trhough Children and put them into an array (direclty moving them into another parent will change the childCount and fuck up
+        for (int i = 0; i < shipHolder.transform.childCount; i++)
+        {
+            shipChild = shipHolder.transform.GetChild(i).gameObject;
+            shipChildren[i] = shipChild;
+        }
+    }
+
     #endregion -------------------------- ||| Fleet Collision ||| ----------------------------------
     private void Awake()
     {
@@ -173,6 +228,7 @@ public class Fleet : MonoBehaviour {
 
     public void MoveOnTurn()
     {
+        postAction = false;
             if (currentPath == null)
             {
                 return;
