@@ -20,14 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4769069071182636}
   - component: {fileID: 114635581706582204}
-  - component: {fileID: 65438304650519660}
-  - component: {fileID: 54871034512094056}
+  - component: {fileID: 65670231837319180}
+  - component: {fileID: 54746504074157050}
   m_Layer: 0
-<<<<<<< HEAD
-  m_Name: Fleet_P2_4
-=======
-  m_Name: Fleet_P2_1
->>>>>>> a199f08e0761dcb22224a2da994b3dc1bbfa3fe1
+  m_Name: FleetP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +115,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800546168517276}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54871034512094056
+--- !u!54 &54746504074157050
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,7 +130,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65438304650519660
+--- !u!65 &65670231837319180
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

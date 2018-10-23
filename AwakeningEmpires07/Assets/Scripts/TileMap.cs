@@ -12,7 +12,6 @@ public class TileMap : MonoBehaviour {
     public GameObject mouseObject;
     int[,] tiles;
     Node[,] graph;
-    Boolean fleetFlag = false;
     private GameObject parentFolder;
     public GameObject homeBaseP1;
     public GameObject homeBaseP2;
