@@ -23,7 +23,11 @@ GameObject:
   - component: {fileID: 65438304650519660}
   - component: {fileID: 54871034512094056}
   m_Layer: 0
+<<<<<<< HEAD
   m_Name: Fleet_P2_4
+=======
+  m_Name: Fleet_P2_1
+>>>>>>> a199f08e0761dcb22224a2da994b3dc1bbfa3fe1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

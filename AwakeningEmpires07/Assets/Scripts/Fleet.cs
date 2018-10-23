@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class Fleet : MonoBehaviour {
@@ -101,6 +102,8 @@ public class Fleet : MonoBehaviour {
             }
             else // Enemy Fleets, engage in combat
             {
+                SceneManager.LoadScene(1, LoadSceneMode.Additive);
+
                 string victorP = "P1"; // Placeholder
                 print("COMBAT!");
                 currentPath = null;
