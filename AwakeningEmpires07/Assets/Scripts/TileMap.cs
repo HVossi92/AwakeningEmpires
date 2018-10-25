@@ -28,16 +28,7 @@ public class TileMap : MonoBehaviour {
     // Use this for initialization (Setting up the tile map)
     void Start ()
     {
-        parentFolder = GameObject.Find("TileMap_Tiles");
-
-        if (!parentFolder)
-        {
-            parentFolder = new GameObject("TileMap_Tiles");
-        }
-
-        GenerateMapData();
-        GeneratePathFindingGraph();
-        GenerateMapVisuals();
+        GenerateMapSetUp();
     }    
 
     // Update is called once per frame
@@ -55,7 +46,21 @@ public class TileMap : MonoBehaviour {
         {
             selectedFleet = null;
         }        
-    }    
+    }
+
+    public void GenerateMapSetUp()
+    {
+        parentFolder = GameObject.Find("TileMap_Tiles");
+
+        if (!parentFolder)
+        {
+            parentFolder = new GameObject("TileMap_Tiles");
+        }
+
+        GenerateMapData();
+        GeneratePathFindingGraph();
+        GenerateMapVisuals();
+    }
 
     #region -------------------------- ||| Generate Map ||| ----------------------------------
     // Actual Map Data

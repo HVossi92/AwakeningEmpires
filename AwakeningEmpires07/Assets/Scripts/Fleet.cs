@@ -102,7 +102,7 @@ public class Fleet : MonoBehaviour {
             }
             else // Enemy Fleets, engage in combat
             {
-                SceneManager.LoadScene(1, LoadSceneMode.Additive);
+                SceneManager.LoadScene(1);
 
                 string victorP = "P1"; // Placeholder
                 print("COMBAT!");

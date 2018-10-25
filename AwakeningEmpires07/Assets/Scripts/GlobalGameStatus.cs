@@ -1,21 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GlobalControl : MonoBehaviour
+public class GlobalGameStatus : MonoBehaviour
 {
-    public static GlobalControl Instance;
+    private GameObject mapObj;
+    private TileMap map;
+    bool loadWorld = false;
 
-    void Awake()
+    private void Start()
     {
-        if (Instance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
+        mapObj = GameObject.Find("Map");
+        map = mapObj.GetComponent<TileMap>();
+    }
+
+
+    public void ResetMap()
+    {
+        print("reset map");
+        SceneManager.LoadScene(3);
+    }
+
+    public void SaveMap()
+    {
+        print("save map");
+    }
+
+    public void LoadMap()
+    {
+        print("load map from save game");
+        // SceneManager.LoadScene(3);
+        map.GenerateMapSetUp();
     }
 }
