@@ -102,10 +102,10 @@ public class Fleet : MonoBehaviour {
             }
             else // Enemy Fleets, engage in combat
             {
-                Game newSavegame = new Game();
-                newSavegame.savegameName = "saveGame1";
-                newSavegame.testString = "Position x = 15";
-                SaveLoad.Save(newSavegame);
+               // Game newSavegame = new Game();
+               // newSavegame.savegameName = "saveGame1";
+               // newSavegame.testString = "Position x = 15";
+               // SaveLoad.Save(newSavegame);
                 SceneManager.LoadScene(1);
 
                 string victorP = "P1"; // Placeholder

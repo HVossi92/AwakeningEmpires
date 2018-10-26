@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 [System.Serializable]
 
-public class Game
+public class old_Game
 {
     public string savegameName;
     public string testString;

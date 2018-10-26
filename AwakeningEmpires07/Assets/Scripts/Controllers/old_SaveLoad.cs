@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public class SaveLoad {
-
+public class old_SaveLoad {
+    /*
     public static void Save(Game saveGame)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -30,5 +30,5 @@ public class SaveLoad {
             Debug.Log("File doesn't exist");            
         }
         return null;
-    }
+    }*/
 }
