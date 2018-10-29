@@ -38,8 +38,8 @@ public class BuildController : MonoBehaviour {
 
     private int fleetCountP1 = 1;
     private int fleetCountP2 = 1;
-    private string fleetNameP1 = "Fleet_P1_";
-    private string fleetNameP2 = "Fleet_P2_";
+    private string fleetNameP1 = "Fleet_P1";
+    private string fleetNameP2 = "Fleet_P2";
 
     private int _factoryCost = 25;
     private int _turretCost = 50;
@@ -81,8 +81,22 @@ public class BuildController : MonoBehaviour {
 
     private void Update()
     {
+        if (buildingTileUI == null || shipyardTileUI == null)
+        {
+            reassignGameObjs();
+        }
+
         GetPlayer();
         currentMinerals = playerController.getMineralBalance();
+    }
+
+    public void reassignGameObjs()
+    {
+        GameObject buildingTileUIObj = GameObject.Find("BuildingTileUI");
+        buildingTileUI = buildingTileUIObj.GetComponent<BuildingTileUI>();
+
+        GameObject shipyardTileUIObj = GameObject.Find("ShipyardTileUI");
+        shipyardTileUI = shipyardTileUIObj.GetComponent<ShipyardTileUI>();
     }
 
     // Setters for Building Costs
@@ -121,12 +135,16 @@ public class BuildController : MonoBehaviour {
     {
         if(activePlayer == 1)
         {
-            fleetBuildP1.transform.name = fleetNameP1 + fleetCountP1.ToString();
+            fleetBuildP1.transform.name = fleetNameP1;
+            Fleet fleet = fleetBuildP1.GetComponent<Fleet>();
+            fleet.fleetNumber = fleetCountP1;
             fleetCountP1++;
             return fleetBuildP1;
         }else //if(activePlayer == 2)
         {
-            fleetBuildP2.transform.name = fleetNameP2 + fleetCountP2.ToString();
+            fleetBuildP2.transform.name = fleetNameP2;
+            Fleet fleet = fleetBuildP2.GetComponent<Fleet>();
+            fleet.fleetNumber = fleetCountP2;
             fleetCountP2++;
             return fleetBuildP2;
         }           

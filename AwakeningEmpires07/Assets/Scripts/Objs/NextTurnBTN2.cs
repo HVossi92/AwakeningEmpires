@@ -23,7 +23,10 @@ public class NextTurnBTN2 : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-         // print("AP" + activePlayer);
+         if (playerController == null)
+        {
+            reassignGameObjs();
+        }
 	}
 
     private void OnMouseDown()
@@ -44,6 +47,12 @@ public class NextTurnBTN2 : MonoBehaviour {
         }
         playerController.CallUpdates();
         SetToBlack();
+    }
+
+    public void reassignGameObjs()
+    {
+        GameObject playerControllerObj = GameObject.Find("PlayerController");
+        playerController = playerControllerObj.GetComponent<PlayerController>();
     }
 
     private void SetToWhite()

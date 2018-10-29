@@ -28,7 +28,12 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        SetText();
+        if (playerTurnText == null)
+        {
+            reassignGameObjs();
+        }
+
+        SetText();        
     }
 
     // Updates only at new turn (gets called from NextTurnBtn2
@@ -36,6 +41,17 @@ public class PlayerController : MonoBehaviour {
     {
         GetPlayer();
         PlayerMineralsRoundTick();        
+    }
+
+    public void reassignGameObjs()
+    {
+        playerTurnText = GameObject.Find("Turn_txt").GetComponent<Text>();
+        mineralsTxtP1 = GameObject.Find("Minerals_txt_P1").GetComponent<Text>();
+        minearlsTxtP2 = GameObject.Find("Minerals_txt_P2").GetComponent<Text>();
+        energyTxtP1 = GameObject.Find("Energy_txt_P1").GetComponent<Text>();
+        energyTxtP2 = GameObject.Find("Energy_txt_P2").GetComponent<Text>();
+
+        nextTurnBtn2 = GameObject.Find("NextTurnBTN2");
     }
 
     private void GetPlayer()

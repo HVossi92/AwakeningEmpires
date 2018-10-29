@@ -12,7 +12,7 @@ public class TileMap : MonoBehaviour {
     public GameObject mouseObject;
     int[,] tiles;
     Node[,] graph;
-    private GameObject parentFolder;
+    public GameObject parentFolder;
     public GameObject homeBaseP1;
     public GameObject homeBaseP2;
 
@@ -50,11 +50,13 @@ public class TileMap : MonoBehaviour {
 
     public void GenerateMapSetUp()
     {
-        parentFolder = GameObject.Find("TileMap_Tiles");
-
+        // parentFolder = GameObject.Find("TileMap_Tiles");
+        parentFolder = Instantiate(parentFolder);
         if (!parentFolder)
         {
-            parentFolder = new GameObject("TileMap_Tiles");
+            //  parentFolder = new GameObject("TileMap_Tiles");
+            //   parentFolder = Instantiate(Resources.Load("TileMap_Tiles")) as GameObject;
+           // parentFolder = Instantiate(parentFolder);
         }
 
         GenerateMapData();
@@ -177,6 +179,7 @@ public class TileMap : MonoBehaviour {
                 TileType tt = tileTypes[tiles[x, z]];
 
                 GameObject go = (GameObject) Instantiate(tt.tilePrefab, new Vector3(x, 0, z), Quaternion.identity);
+                go.name = go.name.Remove(go.name.Length - 7);
                 go.transform.parent = parentFolder.transform;                                                           
 
                 ClickTile ct = go.GetComponent<ClickTile>();

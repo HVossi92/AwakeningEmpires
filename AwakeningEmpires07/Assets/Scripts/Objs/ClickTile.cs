@@ -8,6 +8,7 @@ public class ClickTile : MonoBehaviour {
 
     public int tileX;
     public int tileZ;
+    private GameObject mapObj;
     public TileMap map;
     public GameObject nextTurnBtn2;
     private int activePlayer;
@@ -39,6 +40,10 @@ public class ClickTile : MonoBehaviour {
 
     private void Update()
     {
+        if(map == null)
+        {
+            reassignGameObjs();
+        }
         currentMinerals = playerController.getMineralBalance();
     }
 
@@ -54,19 +59,19 @@ public class ClickTile : MonoBehaviour {
         GetPlayer();
         if (!buildingOnTileFlag)
         {            
-            if (gameObject.name == "TileShipYardPlayer1(Clone)" && activePlayer == 1)
+            if (gameObject.name == "TileShipYardPlayer1" && activePlayer == 1)
             {
                 buildController.SelectTile(this);
             }
-            else if (gameObject.name == "TileShipYardPlayer2(Clone)" && activePlayer == 2)
+            else if (gameObject.name == "TileShipYardPlayer2" && activePlayer == 2)
             {
                 buildController.SelectTile(this);
             }
-            else if (gameObject.name == "TileConstructionPlayer1(Clone)" && activePlayer == 1)
+            else if (gameObject.name == "TileConstructionPlayer1" && activePlayer == 1)
             {
                 buildController.SelectTile(this);
             }
-            else if (gameObject.name == "TileConstructionPlayer2(Clone)" && activePlayer == 2)
+            else if (gameObject.name == "TileConstructionPlayer2" && activePlayer == 2)
             {
                 buildController.SelectTile(this);
             }
@@ -113,8 +118,7 @@ public class ClickTile : MonoBehaviour {
         GameObject fleetBuild = BuildController.instance.GetFleetBuild();
         fleet = (GameObject)Instantiate(fleetBuild, transform.position, transform.rotation);
 
-        GameObject shipHolder = new GameObject();
-        shipHolder.name = "Ships";
+        GameObject shipHolder = Instantiate(Resources.Load("Spaceships/Ships")) as GameObject;
         shipHolder.transform.parent = fleet.transform;
         Vector3 shipHolderPos = new Vector3(fleet.transform.position.x, fleet.transform.position.y + 1f, fleet.transform.position.z);
         shipHolder.transform.position = shipHolderPos;
@@ -155,5 +159,11 @@ public class ClickTile : MonoBehaviour {
             fleet = (GameObject)Instantiate(solarBuild, solarPosition, solarRot);
             buildingOnTileFlag = true;
         }
+    }
+
+    private void reassignGameObjs()
+    {
+        mapObj = GameObject.Find("Map");
+        map = mapObj.GetComponent<TileMap>();
     }
 }

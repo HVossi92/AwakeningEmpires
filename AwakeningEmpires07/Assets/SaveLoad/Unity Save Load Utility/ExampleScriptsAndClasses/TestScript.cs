@@ -8,9 +8,9 @@ public class TestScript : MonoBehaviour {
 	[DontSaveMember]public int myInt = 12;
 	[DontSaveMember]public string myString = "Test123";
 	[DontSaveMember]public Vector3 myVector3 = new Vector3(12.5f, -54.23f, 4f);
-	[SaveMember] public TestClass myTestClass = new TestClass();
-	[SaveMember] public GameObject myGameObject;
-	[SaveMember] public Transform myTransform;
+	[DontSaveMember] public TestClass myTestClass = new TestClass();
+	[DontSaveMember] public GameObject myGameObject;
+	[DontSaveMember] public Transform myTransform;
 	[DontSaveMember]public TestScript myTestScript;
 
 	[DontSaveMember]public int[] myIntArray = new int[] {2,-6,87};

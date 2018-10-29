@@ -10,21 +10,25 @@ public class MouseManager : MonoBehaviour {
     private Color prevClrHover;
     private Color prevClrSelect;
     public GameObject hitObject;
-    public GameObject nextTurnBTN2;
     private int activePlayer;
-    public BuildingTileUI buildingTileUI;
-    public ShipyardTileUI shipyardTileUI;
+    private BuildingTileUI buildingTileUI;
+    private ShipyardTileUI shipyardTileUI;
     private ClickTile clickTile;
 
-    public int test = 42;
-    // Use this for initialization
     void Start () {
         _Camera = FindObjectOfType<Camera>();
-	}
+        reassignGameObjs();
+
+    }
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+        if(buildingTileUI == null || shipyardTileUI == null)
+        {
+            reassignGameObjs();
+        }
+
         ClearHoverSelection();
         Ray ray = _Camera.ScreenPointToRay(Input.mousePosition);
 
@@ -47,14 +51,14 @@ public class MouseManager : MonoBehaviour {
 
         // Select objects by cklicking (on a hovered over Object)
         if (Input.GetMouseButton(0))
-        {      
+        {
             // Hide Building Ui Panel
-            if (hitObject.name != "TileConstructionPlayer1(Clone)" && hitObject.name != "TileConstructionPlayer2(Clone)")
+            if (hitObject.name != "TileConstructionPlayer1" && hitObject.name != "TileConstructionPlayer2")
             {
                buildingTileUI.Hide();
             }
             // Hide Shipyard Ui Panel
-            if (hitObject.name != "TileShipYardPlayer1(Clone)" && hitObject.name != "TileShipYardPlayer2(Clone)")
+            if (hitObject.name != "TileShipYardPlayer1" && hitObject.name != "TileShipYardPlayer2")
             {                
                 shipyardTileUI.Hide();
             }
@@ -66,9 +70,9 @@ public class MouseManager : MonoBehaviour {
             else { 
 
                 GetPlayer();
-                int playerNumber = (int) char.GetNumericValue(hoverObject.name[hoverObject.name.Length - 8]);
-
-                if (hoverObject.name.Contains("_P1_") && hoverObject.name.Contains("Fleet") && activePlayer == 1)
+                int playerNumber = (int) char.GetNumericValue(hoverObject.name[hoverObject.name.Length - 1]);
+                
+                if (hoverObject.name.Contains("_P1") && hoverObject.name.Contains("Fleet") && activePlayer == 1)
                 {
                     CommandBatchSelectObj();
                 }
@@ -136,6 +140,15 @@ public class MouseManager : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void reassignGameObjs()
+    {
+        GameObject buildingTileUIObj = GameObject.Find("BuildingTileUI");
+        buildingTileUI = buildingTileUIObj.GetComponent<BuildingTileUI>();
+   
+        GameObject shipyardTileUIObj = GameObject.Find("ShipyardTileUI");
+        shipyardTileUI = shipyardTileUIObj.GetComponent<ShipyardTileUI>();
     }
 
     private void CommandBatchSelectObj()

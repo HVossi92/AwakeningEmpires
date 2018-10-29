@@ -6,24 +6,26 @@ using System;
 
 public class Fleet : MonoBehaviour {
 
-    public int tileX;
-    public int tileZ;
-    private GameObject mapObj;
-    private GameObject nextTurnObj;
-    private NextTurnBTN2 nextTurnBTN2;
-    public TileMap map;
-    private int curGameRound;
-    private int nextGameRound;
-    public int fleetOfPlayer;
-    public GameObject mouseObj;
-    private MouseManager mouseManager;
-    private bool postAction = false;
+    [DontSaveMember] public int tileX;
+    [DontSaveMember] public int tileZ;
+    [DontSaveMember] private GameObject mapObj;
+    [DontSaveMember] private GameObject nextTurnObj;
+    [DontSaveMember] private NextTurnBTN2 nextTurnBTN2;
+    [DontSaveMember] public TileMap map;
+    [DontSaveMember] private int curGameRound;
+    [DontSaveMember] private int nextGameRound;
+    [DontSaveMember] public int fleetOfPlayer;
+    [DontSaveMember] public GameObject mouseObj;
+    [DontSaveMember] private MouseManager mouseManager;
+    [DontSaveMember] private bool postAction = false;
 
-    public List<Node> currentPath = null;   
-    float remainingMovement;
+    [DontSaveMember] public List<Node> currentPath = null;
+    [DontSaveMember] float remainingMovement;
 
-    GameObject shipHolder;
-    GameObject[] shipChildren;
+    [DontSaveMember] GameObject shipHolder;
+    [DontSaveMember] GameObject[] shipChildren;
+
+    public int fleetNumber;
 
     public virtual int movementSpeed()
     {
@@ -189,24 +191,23 @@ public class Fleet : MonoBehaviour {
     #endregion -------------------------- ||| Fleet Collision ||| ----------------------------------
     private void Awake()
     {
-        mouseObj = GameObject.Find("MouseManager");
-        mapObj = GameObject.Find("Map");
-        nextTurnObj = GameObject.Find("NextTurnBTN2");
-        mouseManager = mouseObj.GetComponent<MouseManager>();
-        map = mapObj.GetComponent<TileMap>();
-        nextTurnBTN2 = nextTurnObj.GetComponent<NextTurnBTN2>();
-    }
+        reassignGameObjs();
+    }    
 
     private void Start()
-    {
+    {   
         // Current Game Round = NextTurnBTN Gameround (1)
         curGameRound = nextTurnBTN2.GetComponent<NextTurnBTN2>().gameRound;
         tileX = (int) transform.position.x;
         tileZ = (int) transform.position.z;
     }
-
+    
     private void Update()
     {
+        if(nextTurnObj == null)
+        {
+            reassignGameObjs();
+        }
         // Current Game Round = NextTurnBTN Gameround (1), but keeps updating, if nextGameRound > curGameRound proceed
         nextGameRound = nextTurnBTN2.GetComponent<NextTurnBTN2>().gameRound;
         if (nextGameRound > curGameRound)
@@ -277,5 +278,16 @@ public class Fleet : MonoBehaviour {
             MoveOnTurn();
         }
                 
+    }
+
+    private void reassignGameObjs()
+    {
+        nextTurnObj = GameObject.Find("NextTurnBTN2");
+        nextTurnBTN2 = nextTurnObj.GetComponent<NextTurnBTN2>();
+
+        mouseObj = GameObject.Find("MouseManager");
+        mapObj = GameObject.Find("Map");
+        mouseManager = mouseObj.GetComponent<MouseManager>();
+        map = mapObj.GetComponent<TileMap>();
     }
 }
