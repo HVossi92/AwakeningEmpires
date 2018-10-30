@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public Text minearlsTxtP2;
     public Text energyTxtP1;
     public Text energyTxtP2;
+    public Text gameRoundTxt;
     public GameObject nextTurnBtn2;     
     private int activePlayer;
     private int gameRound;
@@ -32,7 +33,6 @@ public class PlayerController : MonoBehaviour {
         {
             reassignGameObjs();
         }
-
         SetText();        
     }
 
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
         minearlsTxtP2 = GameObject.Find("Minerals_txt_P2").GetComponent<Text>();
         energyTxtP1 = GameObject.Find("Energy_txt_P1").GetComponent<Text>();
         energyTxtP2 = GameObject.Find("Energy_txt_P2").GetComponent<Text>();
-
+        gameRoundTxt = GameObject.Find("GameRound_txt").GetComponent<Text>();
         nextTurnBtn2 = GameObject.Find("NextTurnBTN2");
     }
 
@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour {
         energyTxtP2.text = "Energy P2: " + energyP2.ToString();
         mineralsTxtP1.text = "Minerals P1: " + mineralsP1.ToString();
         minearlsTxtP2.text = "Mienrals P2: " + mineralsP2.ToString();
+        gameRoundTxt.text = gameRound.ToString();
     }
 
     // Resources

@@ -11,12 +11,13 @@ public class NextTurnBTN2 : MonoBehaviour {
 
 
     // Use this for initialization
-    private void Awake()
+    private void Awake()        
     {
         activePlayer = 1;
+        gameRound = 1;
+        
     }
-    void Start () {
-        gameRound = 1;     
+    void Start () {  
 
         SetToBlack();
     }

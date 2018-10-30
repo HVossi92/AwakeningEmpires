@@ -178,8 +178,8 @@ public class TileMap : MonoBehaviour {
             {
                 TileType tt = tileTypes[tiles[x, z]];
 
-                GameObject go = (GameObject) Instantiate(tt.tilePrefab, new Vector3(x, 0, z), Quaternion.identity);
-                go.name = go.name.Remove(go.name.Length - 7);
+                GameObject go = (GameObject) Instantiate(tt.tilePrefab, new Vector3(x, 0, z), Quaternion.identity); // Tile
+                go.name = go.name.Remove(go.name.Length - 7); // Remove "(Clone)" from Tile
                 go.transform.parent = parentFolder.transform;                                                           
 
                 ClickTile ct = go.GetComponent<ClickTile>();

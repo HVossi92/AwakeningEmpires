@@ -117,6 +117,7 @@ public class ClickTile : MonoBehaviour {
     {
         GameObject fleetBuild = BuildController.instance.GetFleetBuild();
         fleet = (GameObject)Instantiate(fleetBuild, transform.position, transform.rotation);
+        fleet.name = fleet.name.Remove(fleet.name.Length - 7); // Remove "Clone"
 
         GameObject shipHolder = Instantiate(Resources.Load("Spaceships/Ships")) as GameObject;
         shipHolder.transform.parent = fleet.transform;

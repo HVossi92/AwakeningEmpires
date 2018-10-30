@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54746504074157050}
   - component: {fileID: 114798356383750624}
   m_Layer: 0
-  m_Name: FleetP2
+  m_Name: Fleet_P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   map: {fileID: 0}
   fleetOfPlayer: 0
   mouseObj: {fileID: 0}
-  fleetNumber: 3
+  fleetNumber: 1
 --- !u!114 &114798356383750624
 MonoBehaviour:
   m_ObjectHideFlags: 1
