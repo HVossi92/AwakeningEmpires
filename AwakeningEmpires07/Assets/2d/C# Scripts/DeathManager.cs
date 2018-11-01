@@ -7,6 +7,14 @@ public class DeathManager : MonoBehaviour {
 
     GameObject player;
     bool gameOver = false;
+    private GameObject fleetCombatInfoObj;
+    private FleetCombatInfo fleetCombatInfo;
+
+    private void Awake()
+    {
+        fleetCombatInfoObj = GameObject.Find("FleetCombatInfo");
+        fleetCombatInfo = fleetCombatInfoObj.GetComponent<FleetCombatInfo>();
+    }
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("player");
@@ -31,7 +39,8 @@ public class DeathManager : MonoBehaviour {
 
    }
     IEnumerator LoadGameOver() { 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
+        fleetCombatInfo.postCombatFlag = true;
         SceneManager.LoadScene(3);
     
 
