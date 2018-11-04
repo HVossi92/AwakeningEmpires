@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4684379896167224}
   - component: {fileID: 114663272814724694}
+  - component: {fileID: 114392232703972818}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -33,13 +34,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082485987168134}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114392232703972818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1082485987168134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46273fc06c47d94599f05044d604991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114663272814724694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,7 +87,7 @@ MonoBehaviour:
   - name: ConstructionSlotPlayer2
     tilePrefab: {fileID: 1854543564633518, guid: c20c1beb86bf09649a0e45a2b308f0cd,
       type: 2}
-    isPassable: 0
+    isPassable: 1
     movementCost: 2
   - name: TileShipYardPlayer1
     tilePrefab: {fileID: 1854543564633518, guid: 353e729304bc60040ad30a3763e98eaf,
@@ -88,5 +100,7 @@ MonoBehaviour:
     isPassable: 1
     movementCost: 2
   mouseObject: {fileID: 0}
+  parentFolder: {fileID: 1876983418932786, guid: 6ee7f49a251d0d440ba2718f4e01615c,
+    type: 2}
   homeBaseP1: {fileID: 1486927473885564, guid: 23c24903d2854c24b88101b8e54b14a3, type: 2}
   homeBaseP2: {fileID: 1337762545128850, guid: 616eed066ecda454bb6ef0ebd6019625, type: 2}

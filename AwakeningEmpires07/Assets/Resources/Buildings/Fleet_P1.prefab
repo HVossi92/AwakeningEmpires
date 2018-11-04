@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 65670231837319180}
   - component: {fileID: 54746504074157050}
   - component: {fileID: 114574712093737958}
+  - component: {fileID: 114149261028378194}
   m_Layer: 0
   m_Name: Fleet_P1
   m_TagString: Untagged
@@ -143,6 +144,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.5, z: 0.9}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &114149261028378194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568959929957350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e58f32f6cdf6c41ae6fd007c7cf0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114574712093737958
 MonoBehaviour:
   m_ObjectHideFlags: 1

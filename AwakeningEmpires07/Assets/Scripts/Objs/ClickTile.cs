@@ -67,11 +67,11 @@ public class ClickTile : MonoBehaviour {
             {
                 buildController.SelectTile(this);
             }
-            else if (gameObject.name == "TileConstructionPlayer1" && activePlayer == 1)
+            else if (gameObject.name == "TileConstruction_P1" && activePlayer == 1)
             {
                 buildController.SelectTile(this);
             }
-            else if (gameObject.name == "TileConstructionPlayer2" && activePlayer == 2)
+            else if (gameObject.name == "TileConstruction_P2" && activePlayer == 2)
             {
                 buildController.SelectTile(this);
             }

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114754398431994084}
   - component: {fileID: 114151442261236716}
   m_Layer: 0
-  m_Name: SolarP2
+  m_Name: BuildingSolarP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

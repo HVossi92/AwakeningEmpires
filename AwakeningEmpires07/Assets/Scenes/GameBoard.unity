@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -312,22 +312,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c6de5c088a846e4a9638729fe6a08e5, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1007239125 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1082485987168134, guid: f2876a48876a084488e222fab6b25832,
-    type: 2}
-  m_PrefabInternal: {fileID: 1625654497}
---- !u!114 &1007239126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1007239125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e46273fc06c47d94599f05044d604991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1035334192 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4679717908691038, guid: a33feab844012304e814340ac3b3083f,
@@ -705,12 +689,6 @@ Prefab:
       propertyPath: mouseObject
       value: 
       objectReference: {fileID: 1875203006}
-    - target: {fileID: 114663272814724694, guid: f2876a48876a084488e222fab6b25832,
-        type: 2}
-      propertyPath: parentFolder
-      value: 
-      objectReference: {fileID: 1876983418932786, guid: 6ee7f49a251d0d440ba2718f4e01615c,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2876a48876a084488e222fab6b25832, type: 2}
   m_IsPrefabAsset: 0

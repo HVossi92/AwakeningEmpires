@@ -53,7 +53,7 @@ public class MouseManager : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             // Hide Building Ui Panel
-            if (hitObject.name != "TileConstructionPlayer1" && hitObject.name != "TileConstructionPlayer2")
+            if (hitObject.name != "TileConstruction_P1" && hitObject.name != "TileConstruction_P2")
             {
                buildingTileUI.Hide();
             }

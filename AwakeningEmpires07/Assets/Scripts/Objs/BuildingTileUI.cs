@@ -13,7 +13,7 @@ public class BuildingTileUI : MonoBehaviour {
 
     public void SetTarget(ClickTile _target)
     {
-        if (_target.name == "TileConstructionPlayer1" || _target.name == "TileConstructionPlayer2")
+        if (_target.name == "TileConstruction_P1" || _target.name == "TileConstruction_P2")
         {
             this.target = _target;
             Vector3 newPosition = new Vector3(target.transform.position.x - 0.5f, target.transform.position.y + 0.5f, target.transform.position.z);

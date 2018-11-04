@@ -110,7 +110,7 @@ public class Fleet : MonoBehaviour {
         string curFleetName = gameObject.name;        
         int curFleetNum = fleetNumber;
         string colFleetName = col.gameObject.name;        
-
+        
         if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Fleet") && !postAction)
         {
             int colFleetNum = col.gameObject.GetComponent<Fleet>().fleetNumber;
@@ -121,18 +121,34 @@ public class Fleet : MonoBehaviour {
             }
             else // Enemy Fleets, engage in combat
             {
-                postAction = true;                
-                fleetCombatInfo.fightersP1 = 2;
-                slu.SaveGame(slu.quickSaveName); // <<<<<<------------------------------------------------------------------------------------------------------
-                SceneManager.LoadScene(1);
+                StartCombat();
             }
-        }else if(postAction)
+        }
+        else if(curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Fleet") && postAction)
         {
             FleetCombat(curFleetName);
+        }else if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("TileConstructionPlayer") && !postAction)
+        {/*
+            if ((curFleetName.Contains("_P1") && colFleetName.Contains("_P1")) || (curFleetName.Contains("_P2") && colFleetName.Contains("_P2")))
+            {
+                // Think of a functionality?
+            }
+            else // Enemy Fleets, engage in combat
+            {
+                StartCombat();
+            }*/
         }
     }
 
-    private void FriendlyFleetMerge(Collider col, int curFleetNum, int colFleetNum)
+    private void StartCombat()
+    {
+        postAction = true;
+        fleetCombatInfo.fightersP1 = 2;
+        slu.SaveGame(slu.quickSaveName); // <<<<<<------------------------------------------------------------------------------------------------------
+        SceneManager.LoadScene(1);
+    }
+
+    private void FriendlyFleetMerge(Collider col, int curFleetNum, int colFleetNum = 0) 
     {
         // Friendly Fleets merge
         // Since I only want to destroy one fleet, this will only take action for the fleet with the lower number in the unity Hierachy (maybe change it to a private in inside the fleet script?)

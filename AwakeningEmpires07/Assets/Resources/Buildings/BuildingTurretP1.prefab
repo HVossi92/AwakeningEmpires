@@ -131,9 +131,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4556091521011602}
-  - component: {fileID: 114178113452126682}
+  - component: {fileID: 114728589760992068}
   m_Layer: 0
-  m_Name: TurretP2
+  m_Name: BuildingTurretP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,7 +211,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1453400504579220}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_Children:
@@ -219,7 +219,7 @@ Transform:
   - {fileID: 4547760531761752}
   m_Father: {fileID: 4556091521011602}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4333735454879526
 Transform:
   m_ObjectHideFlags: 1
@@ -463,7 +463,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 9e8871cb875d9f34c9aeb5f3847279da, type: 2}
+  - {fileID: 2100000, guid: e690a7a55712188489172b53406cfe08, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -613,7 +613,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114178113452126682
+--- !u!114 &114728589760992068
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c19f3e134862e74dbc98cb514a82ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabName: TurretP2
+  prefabName: TurretP1
   id: 
   idParent: 
   dontSave: 0
