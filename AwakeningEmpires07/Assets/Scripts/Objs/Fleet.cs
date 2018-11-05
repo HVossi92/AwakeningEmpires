@@ -106,6 +106,7 @@ public class Fleet : MonoBehaviour {
     //Fleet Collision, register Box Fleet Colliders, then decide whether it's frendlies or foes
     private void OnTriggerEnter(Collider col)
     {
+        print(col.name);
         // Current and Collider Fleet Names and Numbers
         string curFleetName = gameObject.name;        
         int curFleetNum = fleetNumber;
@@ -127,16 +128,17 @@ public class Fleet : MonoBehaviour {
         else if(curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Fleet") && postAction)
         {
             FleetCombat(curFleetName);
-        }else if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("TileConstructionPlayer") && !postAction)
-        {/*
-            if ((curFleetName.Contains("_P1") && colFleetName.Contains("_P1")) || (curFleetName.Contains("_P2") && colFleetName.Contains("_P2")))
+        }else if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Building") && !postAction)
+        {
+            if ((curFleetName.Contains("_P1") && colFleetName.Contains("P1")) || (curFleetName.Contains("_P2") && colFleetName.Contains("_P2")))
             {
                 // Think of a functionality?
+                print("Friendlies in Orbit");
             }
             else // Enemy Fleets, engage in combat
             {
                 StartCombat();
-            }*/
+            }
         }
     }
 
@@ -174,16 +176,14 @@ public class Fleet : MonoBehaviour {
     private void FleetCombat(string curFleetName)
     {
         string victorP = "P1"; // Placeholder
-                               //print("COMBAT!");
         currentPath = null;
 
         if (curFleetName.Contains(victorP))
         {
             return;
         }
-        else
-        {
-            //Destroy(gameObject);            
+        else if (curFleetName.Contains("Fleet")) // Check that the loser is a Fleet
+        {         
 
             switch (victorP)
             {
@@ -235,6 +235,10 @@ public class Fleet : MonoBehaviour {
             {
                 Destroy(gameObject);
             }
+        }
+        else // Losing Side is a Building
+        {
+
         }
     }
 

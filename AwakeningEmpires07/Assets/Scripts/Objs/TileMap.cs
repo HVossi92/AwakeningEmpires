@@ -10,7 +10,7 @@ public class TileMap : MonoBehaviour {
     public TileType[] tileTypes;
     private MouseManager mouseManager;
     public GameObject mouseObject;
-    int[,] tiles;
+    public int[,] tiles;
     Node[,] graph;
     public GameObject parentFolder;
     public GameObject homeBaseP1;

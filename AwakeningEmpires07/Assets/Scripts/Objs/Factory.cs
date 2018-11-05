@@ -19,7 +19,7 @@ public class Factory : PlayerBuilding {
         BuildingUpdateInit();
         EarnMinearlsCheck();
     }
-
+    
     private void EarnMinearlsCheck()
     {
         if (ofPlayer == activePlayer && factoryFlag && currentGameRound > gameRound + 1)
