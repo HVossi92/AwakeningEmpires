@@ -106,7 +106,6 @@ public class Fleet : MonoBehaviour {
     //Fleet Collision, register Box Fleet Colliders, then decide whether it's frendlies or foes
     private void OnTriggerEnter(Collider col)
     {
-        print(col.name);
         // Current and Collider Fleet Names and Numbers
         string curFleetName = gameObject.name;        
         int curFleetNum = fleetNumber;
@@ -139,6 +138,9 @@ public class Fleet : MonoBehaviour {
             {
                 StartCombat();
             }
+        }else if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Building") && !postAction)
+        {
+            FleetCombat(curFleetName);
         }
     }
 
@@ -183,8 +185,7 @@ public class Fleet : MonoBehaviour {
             return;
         }
         else if (curFleetName.Contains("Fleet")) // Check that the loser is a Fleet
-        {         
-
+        {                     
             switch (victorP)
             {
                 case "P1":
@@ -200,7 +201,7 @@ public class Fleet : MonoBehaviour {
 
             ShipChildrenList(out shipHolder, out shipChildren);
 
-            int desFighter = 0;
+            int desFighter = 1;
             int desBomber = 0;
             int desCorvette = 0;
 
@@ -238,7 +239,7 @@ public class Fleet : MonoBehaviour {
         }
         else // Losing Side is a Building
         {
-
+            print("Building");
         }
     }
 
