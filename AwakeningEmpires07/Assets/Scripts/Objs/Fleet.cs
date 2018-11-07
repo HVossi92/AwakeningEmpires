@@ -138,9 +138,6 @@ public class Fleet : MonoBehaviour {
             {
                 StartCombat();
             }
-        }else if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Building") && !postAction)
-        {
-            FleetCombat(curFleetName);
         }
     }
 
@@ -177,7 +174,7 @@ public class Fleet : MonoBehaviour {
     // "Touching" Fleets are enemies, Combat results will be executed. Needs to be called after Loading back map
     private void FleetCombat(string curFleetName)
     {
-        string victorP = "P1"; // Placeholder
+        string victorP = "P2"; // Placeholder
         currentPath = null;
 
         if (curFleetName.Contains(victorP))
