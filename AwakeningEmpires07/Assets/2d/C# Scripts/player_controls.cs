@@ -38,7 +38,7 @@ public class player_controls : MonoBehaviour
     {
         PlayerPrefs.SetInt("Health", health);
         PlayerPrefs.SetInt("Ammo", ammo);
-
+        Die();
         anim = GetComponent<Animator>();
 
     }
