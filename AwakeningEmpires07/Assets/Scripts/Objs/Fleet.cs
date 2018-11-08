@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public class Fleet : MonoBehaviour {
+public class Fleet : PlayerPawn
+{
 
     public int tileX;
     public int tileZ;
@@ -23,7 +24,8 @@ public class Fleet : MonoBehaviour {
 
     [DontSaveMember] public List<Node> currentPath = null;
     [DontSaveMember] float remainingMovement;
-
+    [DontSaveMember] ShipChildrenCollect shipChildrenCollect;
+    [DontSaveMember] CombatCalc combatCalc;
     [DontSaveMember] GameObject shipHolder;
    // [DontSaveMember] List<GameObject> shipChildren;
 
@@ -46,6 +48,7 @@ public class Fleet : MonoBehaviour {
 
     private void Awake()
     {
+        PlayerPawnStartInit();
         reassignGameObjs();        
     }
 
@@ -126,8 +129,9 @@ public class Fleet : MonoBehaviour {
         }
         else if(curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Fleet") && postAction)
         {
-            FleetCombat(curFleetName);
-        }else if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Building") && !postAction)
+            combatCalc.FleetCombat(gameObject, curFleetName, currentPath, tileX, tileZ);
+        }
+        else if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Building") && !postAction)
         {
             if ((curFleetName.Contains("_P1") && colFleetName.Contains("P1")) || (curFleetName.Contains("_P2") && colFleetName.Contains("_P2")))
             {
@@ -155,8 +159,9 @@ public class Fleet : MonoBehaviour {
         // Since I only want to destroy one fleet, this will only take action for the fleet with the lower number in the unity Hierachy (maybe change it to a private in inside the fleet script?)
         if (curFleetNum < colFleetNum)
         {
+            print(curFleetNum);
             GameObject shipHolder = gameObject.transform.GetChild(1).gameObject;
-            List<GameObject> shipChildren = ShipChildrenList(shipHolder);
+            List<GameObject> shipChildren = shipChildrenCollect.ShipChildrenList(shipHolder);
             // while loop through the shipChildren Array and move everyone into the new fleet
             int x = 0;
             while (shipHolder.transform.childCount > 0)
@@ -169,90 +174,6 @@ public class Fleet : MonoBehaviour {
             // All ships have been moved into the new fleet, destroy the old one
             Destroy(gameObject);
         }
-    }
-
-    // "Touching" Fleets are enemies, Combat results will be executed. Needs to be called after Loading back map
-    private void FleetCombat(string curFleetName)
-    {
-        string victorP = "P2"; // Placeholder
-        currentPath = null;
-
-        if (curFleetName.Contains(victorP))
-        {
-            return;
-        }
-        else if (curFleetName.Contains("Fleet")) // Check that the loser is a Fleet
-        {                     
-            switch (victorP)
-            {
-                case "P1":
-                    tileX += 1;
-                    break;
-                case "P2":
-                    tileX -= 1;
-                    break;
-                default:
-                    tileZ += 1;
-                    break;
-            }
-
-            GameObject shipHolder = gameObject.transform.GetChild(1).gameObject;
-            List<GameObject> shipChildren = ShipChildrenList(shipHolder);
-
-            int desFighter = 1;
-            int desBomber = 0;
-            int desCorvette = 0;
-
-            for (int i = shipChildren.Count - 1; i >= 0; i--)
-            {
-                if (shipChildren[i].transform.name.Contains("Fighter") && desFighter > 0)
-                {
-                    desFighter--;
-                    Destroy(shipChildren[i]);
-                    shipChildren.RemoveAt(i);
-                    continue;
-                }
-
-                if (shipChildren[i].transform.name.Contains("Bomber") && desBomber > 0)
-                {
-                    desBomber--;
-                    Destroy(shipChildren[i]);
-                    shipChildren.RemoveAt(i);
-                    continue;
-                }
-
-                if (shipChildren[i].transform.name.Contains("Corvette") && desCorvette > 0)
-                {
-                    desCorvette--;
-                    Destroy(shipChildren[i]);
-                    shipChildren.RemoveAt(i);
-                    continue;
-                }
-            }
-
-            if (shipChildren.Count < 1)
-            {
-                Destroy(gameObject);
-            }
-        }
-        else // Losing Side is a Building
-        {
-            print("Building");
-        }
-    }
-
-    private List<GameObject> ShipChildrenList(GameObject shipHolder)
-    {        
-        GameObject shipChild;
-        List<GameObject> shipChildren = new List<GameObject>();
-
-        // loop trhough Children and put them into a List (direclty moving them into another parent will change the childCount and fuck up
-        for (int i = 0; i < shipHolder.transform.childCount; i++)
-        {
-            shipChild = shipHolder.transform.GetChild(i).gameObject;
-            shipChildren.Add(shipChild);
-        }
-        return shipChildren;
     }
 
     #endregion -------------------------- ||| Fleet Collision ||| ----------------------------------
@@ -315,5 +236,8 @@ public class Fleet : MonoBehaviour {
 
         fleetCombatInfoObj = GameObject.Find("FleetCombatInfo");
         fleetCombatInfo = fleetCombatInfoObj.GetComponent<FleetCombatInfo>();
+
+        shipChildrenCollect = playerController.GetComponent<ShipChildrenCollect>();
+        combatCalc = playerController.GetComponent<CombatCalc>();
     }
 }

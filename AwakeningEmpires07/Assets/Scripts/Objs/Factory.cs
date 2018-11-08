@@ -22,7 +22,7 @@ public class Factory : PlayerBuilding {
     
     private void EarnMinearlsCheck()
     {
-        if (ofPlayer == activePlayer && factoryFlag && currentGameRound > gameRound + 1)
+        if (ofPlayer == activePlayer && factoryFlag && curGameRound > gameRound + 1)
         {
             EarnMinerals();
             factoryFlag = false;

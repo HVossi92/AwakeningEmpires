@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4831583464610564}
   - component: {fileID: 114917219836483520}
+  - component: {fileID: 114048761640493162}
+  - component: {fileID: 114549311736063360}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -40,6 +42,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114048761640493162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1685005371353336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df34a4e1eb5355b4fa5477c83bb4434d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114549311736063360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1685005371353336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46273fc06c47d94599f05044d604991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114917219836483520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,4 +80,5 @@ MonoBehaviour:
   minearlsTxtP2: {fileID: 0}
   energyTxtP1: {fileID: 0}
   energyTxtP2: {fileID: 0}
+  gameRoundTxt: {fileID: 0}
   nextTurnBtn2: {fileID: 0}
