@@ -37,8 +37,7 @@ public class player_controls : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("Health", health);
-        PlayerPrefs.SetInt("Ammo", ammo);
-        Die();
+        PlayerPrefs.SetInt("Ammo", ammo);        
         anim = GetComponent<Animator>();
 
     }
@@ -104,7 +103,7 @@ public class player_controls : MonoBehaviour
         delay = 0;
         Instantiate(bullet, a.transform.position, Quaternion.identity);
         Instantiate(bullet, b.transform.position, Quaternion.identity);
-
+        Die();
     }
 
       public void Missile()

@@ -8,7 +8,7 @@ public class Fleet : PlayerPawn
 {
 
     public int tileX;
-    public int tileZ;
+    public int tileZ;    
     [DontSaveMember] private GameObject mapObj;
     [DontSaveMember] private GameObject nextTurnObj;
     [DontSaveMember] private NextTurnBTN2 nextTurnBTN2;
@@ -20,8 +20,7 @@ public class Fleet : PlayerPawn
     [DontSaveMember] public int fleetOfPlayer;
     [DontSaveMember] public GameObject mouseObj;
     [DontSaveMember] private MouseManager mouseManager;
-    private bool postAction = false;
-
+    bool fleetPostAction;
     [DontSaveMember] public List<Node> currentPath = null;
     [DontSaveMember] float remainingMovement;
     [DontSaveMember] ShipChildrenCollect shipChildrenCollect;
@@ -53,7 +52,7 @@ public class Fleet : PlayerPawn
     }
 
     private void Start()
-    {
+    {        
         // Load in SaveLoad Utility
         if (slu == null)
         {
@@ -74,6 +73,7 @@ public class Fleet : PlayerPawn
 
     private void Update()
     {
+        fleetPostAction = fleetCombatInfo.fleetPostAction;
         if (nextTurnObj == null)
         {
             reassignGameObjs();
@@ -114,7 +114,7 @@ public class Fleet : PlayerPawn
         int curFleetNum = fleetNumber;
         string colFleetName = col.gameObject.name;        
         
-        if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Fleet") && !postAction)
+        if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Fleet") && !fleetPostAction)
         {
             int colFleetNum = col.gameObject.GetComponent<Fleet>().fleetNumber;
             // Friendly Fleets or enemy Fleets
@@ -124,14 +124,16 @@ public class Fleet : PlayerPawn
             }
             else // Enemy Fleets, engage in combat
             {
+                print("Start Combat");
                 StartCombat();
             }
         }
-        else if(curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Fleet") && postAction)
+        else if(curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Fleet") && fleetPostAction)
         {
+            print("Combat Calc");
             combatCalc.FleetCombat(gameObject, curFleetName, currentPath, tileX, tileZ);
         }
-        else if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Building") && !postAction)
+        else if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Building") && !fleetPostAction)
         {
             if ((curFleetName.Contains("_P1") && colFleetName.Contains("P1")) || (curFleetName.Contains("_P2") && colFleetName.Contains("_P2")))
             {
@@ -147,7 +149,7 @@ public class Fleet : PlayerPawn
 
     private void StartCombat()
     {
-        postAction = true;
+        fleetCombatInfo.fleetPostAction = true;
         fleetCombatInfo.fightersP1 = 2;
         slu.SaveGame(slu.quickSaveName); // <<<<<<------------------------------------------------------------------------------------------------------
         SceneManager.LoadScene(1);
@@ -180,7 +182,7 @@ public class Fleet : PlayerPawn
 
     public void MoveOnTurn()
     {
-        postAction = false;
+        fleetCombatInfo.fleetPostAction = false;
         if (currentPath == null)
         {
             return;
@@ -239,5 +241,7 @@ public class Fleet : PlayerPawn
 
         shipChildrenCollect = playerController.GetComponent<ShipChildrenCollect>();
         combatCalc = playerController.GetComponent<CombatCalc>();
+
+        
     }
 }

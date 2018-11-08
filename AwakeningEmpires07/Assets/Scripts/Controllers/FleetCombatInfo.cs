@@ -14,6 +14,7 @@ public class FleetCombatInfo : MonoBehaviour
     public int bombersP2 = 0;
     public int corvettesP2 = 0;
 
+    public bool fleetPostAction = false;
     public bool postCombatFlag = false;
 
     private GameObject sluObj;
@@ -30,6 +31,7 @@ public class FleetCombatInfo : MonoBehaviour
 
     private void Update()
     {
+        print(fleetPostAction);
         SingeltonFCI();
         ReloadGameStatus();
     }

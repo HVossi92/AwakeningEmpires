@@ -6,7 +6,6 @@ public class PlayerPawn : MonoBehaviour {
 
     protected GameObject playerControllerObj;
     protected PlayerController playerController;
-
     protected void PlayerPawnStartInit()
     {
         playerControllerObj = GameObject.Find("PlayerController");

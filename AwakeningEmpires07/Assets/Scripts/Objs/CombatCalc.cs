@@ -15,6 +15,7 @@ public class CombatCalc : MonoBehaviour {
     // "Touching" Fleets are enemies, Combat results will be executed. Needs to be called after Loading back map
     public void FleetCombat(GameObject curFleet, string curFleetName, List<Node> currentPath, int tileX, int tileZ)
     {
+        print("Fleet Combat");
         Fleet myFleet = curFleet.GetComponent<Fleet>();
 
         string victorP = "P2"; // Placeholder
