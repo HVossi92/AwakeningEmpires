@@ -25,7 +25,7 @@ public class Fleet : MonoBehaviour {
     [DontSaveMember] float remainingMovement;
 
     [DontSaveMember] GameObject shipHolder;
-    [DontSaveMember] List<GameObject> shipChildren;
+   // [DontSaveMember] List<GameObject> shipChildren;
 
     public int fleetNumber;
     private GameObject sluObj;
@@ -155,8 +155,8 @@ public class Fleet : MonoBehaviour {
         // Since I only want to destroy one fleet, this will only take action for the fleet with the lower number in the unity Hierachy (maybe change it to a private in inside the fleet script?)
         if (curFleetNum < colFleetNum)
         {
-            ShipChildrenList(out shipHolder, out shipChildren);
-
+            GameObject shipHolder = gameObject.transform.GetChild(1).gameObject;
+            List<GameObject> shipChildren = ShipChildrenList(shipHolder);
             // while loop through the shipChildren Array and move everyone into the new fleet
             int x = 0;
             while (shipHolder.transform.childCount > 0)
@@ -196,7 +196,8 @@ public class Fleet : MonoBehaviour {
                     break;
             }
 
-            ShipChildrenList(out shipHolder, out shipChildren);
+            GameObject shipHolder = gameObject.transform.GetChild(1).gameObject;
+            List<GameObject> shipChildren = ShipChildrenList(shipHolder);
 
             int desFighter = 1;
             int desBomber = 0;
@@ -240,11 +241,10 @@ public class Fleet : MonoBehaviour {
         }
     }
 
-    private void ShipChildrenList(out GameObject shipHolder, out List<GameObject> shipChildren)
-    {
-        shipHolder = gameObject.transform.GetChild(1).gameObject;
+    private List<GameObject> ShipChildrenList(GameObject shipHolder)
+    {        
         GameObject shipChild;
-        shipChildren = new List<GameObject>();
+        List<GameObject> shipChildren = new List<GameObject>();
 
         // loop trhough Children and put them into a List (direclty moving them into another parent will change the childCount and fuck up
         for (int i = 0; i < shipHolder.transform.childCount; i++)
@@ -252,6 +252,7 @@ public class Fleet : MonoBehaviour {
             shipChild = shipHolder.transform.GetChild(i).gameObject;
             shipChildren.Add(shipChild);
         }
+        return shipChildren;
     }
 
     #endregion -------------------------- ||| Fleet Collision ||| ----------------------------------
