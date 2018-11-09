@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4444921797394764}
   - component: {fileID: 114754398431994084}
   - component: {fileID: 114151442261236716}
+  - component: {fileID: 65846370826663330}
   m_Layer: 0
   m_Name: BuildingSolarP2
   m_TagString: Untagged
@@ -263,6 +264,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1393322198982020}
   m_Mesh: {fileID: 4300004, guid: 9afdcb0e8b3a31849a6bf0f9e6dd9f82, type: 3}
+--- !u!65 &65846370826663330
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1016063015491514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08, y: 0.08, z: 0.08}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114151442261236716
 MonoBehaviour:
   m_ObjectHideFlags: 1

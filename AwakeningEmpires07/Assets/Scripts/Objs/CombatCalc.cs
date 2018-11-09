@@ -13,7 +13,7 @@ public class CombatCalc : MonoBehaviour {
     }
 
     // "Touching" Fleets are enemies, Combat results will be executed. Needs to be called after Loading back map
-    public void FleetCombat(GameObject curFleet, string curFleetName, List<Node> currentPath, int tileX, int tileZ)
+    public void FleetCombat(GameObject curFleet, string curFleetName, Collider collider, string colliderName,List<Node> currentPath, int tileX, int tileZ)
     {
         print("Fleet Combat");
         Fleet myFleet = curFleet.GetComponent<Fleet>();
@@ -21,6 +21,19 @@ public class CombatCalc : MonoBehaviour {
         string victorP = "P2"; // Placeholder
         myFleet.currentPath = null;
 
+        if (!colliderName.Contains("Building"))
+        {
+            FleetVsFleet(curFleet, curFleetName, collider, colliderName, myFleet, victorP);
+        }
+        else
+        {
+            FleetVsBuilding(curFleet, curFleetName, collider, colliderName, myFleet, victorP);
+        }
+    }
+
+    private void FleetVsFleet(GameObject curFleet, string curFleetName, Collider collider, string colliderName, Fleet myFleet, string victorP)
+    {
+        print("Fleet vs Fleet");
         if (curFleetName.Contains(victorP))
         {
             return;
@@ -39,9 +52,35 @@ public class CombatCalc : MonoBehaviour {
                 Destroy(curFleet);
             }
         }
-        else // Losing Side is a Building
+        else if (colliderName.Contains("Building")) // Losing Side is a Building
         {
-            print("Building");
+            print("Building Destroyed");
+            Destroy(collider);
+        }
+    }
+
+    private void FleetVsBuilding(GameObject curFleet, string curFleetName, Collider collider, string colliderName, Fleet myFleet, string victorP)
+    {
+        print("Fleet vs Building");
+
+        if(curFleetName.Contains("Fleet") && !curFleetName.Contains(victorP)) // Check that the loser is a Fleet
+        {
+            MoveLosingFleet(myFleet, curFleet, victorP);
+
+            GameObject shipHolder = curFleet.transform.GetChild(1).gameObject;
+            List<GameObject> shipChildren = shipChildrenCollect.ShipChildrenList(shipHolder);
+            CalculateCombatLosses(shipChildren);
+
+            // If the losing Fleet is left with no ships, the Fleet Game Piece gets destroyed
+            if (shipChildren.Count < 1)
+            {
+                Destroy(curFleet);
+            }
+        }
+        else if (colliderName.Contains("Building")) // Losing Side is a Building
+        {
+            print("Building Destroyed");
+            Destroy(collider.gameObject);
         }
     }
 
@@ -84,9 +123,10 @@ public class CombatCalc : MonoBehaviour {
 
     // Move the losing Fleet back a Tile on the gameboard
     private static void MoveLosingFleet(Fleet myFleet, GameObject curFleet, string victorP)
-    {        
+    {
+        print("Loser Retreats");
         switch (victorP)
-        {
+        {            
             case "P1":
                 myFleet.tileX += 1;
                 break;

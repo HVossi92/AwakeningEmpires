@@ -109,6 +109,7 @@ public class Fleet : PlayerPawn
     //Fleet Collision, register Box Fleet Colliders, then decide whether it's frendlies or foes
     private void OnTriggerEnter(Collider col)
     {
+        print("First print col " + col);
         // Current and Collider Fleet Names and Numbers
         string curFleetName = gameObject.name;        
         int curFleetNum = fleetNumber;
@@ -131,19 +132,24 @@ public class Fleet : PlayerPawn
         else if(curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Fleet") && fleetPostAction)
         {
             print("Combat Calc");
-            combatCalc.FleetCombat(gameObject, curFleetName, currentPath, tileX, tileZ);
+            combatCalc.FleetCombat(gameObject, curFleetName, col, colFleetName, currentPath, tileX, tileZ);
         }
         else if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Building") && !fleetPostAction)
         {
-            if ((curFleetName.Contains("_P1") && colFleetName.Contains("P1")) || (curFleetName.Contains("_P2") && colFleetName.Contains("_P2")))
+            if ((curFleetName.Contains("_P1") && colFleetName.Contains("P1")) || (curFleetName.Contains("_P2") && colFleetName.Contains("P2")))
             {
                 // Think of a functionality?
                 print("Friendlies in Orbit");
             }
             else // Enemy Fleets, engage in combat
             {
+                print("Start Building Combat");
                 StartCombat();
             }
+        }else if (curFleetName.StartsWith("Fleet") && colFleetName.StartsWith("Building") && fleetPostAction)
+        {
+            print("Combat Calc");
+            combatCalc.FleetCombat(gameObject, curFleetName, col, colFleetName, currentPath, tileX, tileZ);
         }
     }
 

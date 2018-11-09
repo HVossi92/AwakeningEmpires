@@ -31,7 +31,6 @@ public class FleetCombatInfo : MonoBehaviour
 
     private void Update()
     {
-        print(fleetPostAction);
         SingeltonFCI();
         ReloadGameStatus();
     }
