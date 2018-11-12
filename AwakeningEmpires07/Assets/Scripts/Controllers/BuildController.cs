@@ -36,8 +36,7 @@ public class BuildController : MonoBehaviour {
     public GameObject playerControllerObj;
     private PlayerController playerController;
 
-    private int fleetCountP1 = 1;
-    private int fleetCountP2 = 1;
+    private int fleetCount = 1;
     private string fleetNameP1 = "Fleet_P1";
     private string fleetNameP2 = "Fleet_P2";
 
@@ -137,15 +136,15 @@ public class BuildController : MonoBehaviour {
         {
             fleetBuildP1.transform.name = fleetNameP1;
             Fleet fleet = fleetBuildP1.GetComponent<Fleet>();
-            fleet.fleetNumber = fleetCountP1;
-            fleetCountP1++;
+            fleet.fleetNumber = fleetCount;
+            fleetCount++;
             return fleetBuildP1;
         }else //if(activePlayer == 2)
         {
             fleetBuildP2.transform.name = fleetNameP2;
             Fleet fleet = fleetBuildP2.GetComponent<Fleet>();
-            fleet.fleetNumber = fleetCountP2;
-            fleetCountP2++;
+            fleet.fleetNumber = fleetCount;
+            fleetCount++;
             return fleetBuildP2;
         }           
     }

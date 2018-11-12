@@ -15,7 +15,6 @@ public class CombatCalc : MonoBehaviour {
     // "Touching" Fleets are enemies, Combat results will be executed. Needs to be called after Loading back map
     public void FleetCombat(GameObject curFleet, string curFleetName, Collider collider, string colliderName,List<Node> currentPath, int tileX, int tileZ)
     {
-        print("Fleet Combat");
         Fleet myFleet = curFleet.GetComponent<Fleet>();
 
         string victorP = "P2"; // Placeholder
@@ -33,7 +32,6 @@ public class CombatCalc : MonoBehaviour {
 
     private void FleetVsFleet(GameObject curFleet, string curFleetName, Collider collider, string colliderName, Fleet myFleet, string victorP)
     {
-        print("Fleet vs Fleet");
         if (curFleetName.Contains(victorP))
         {
             return;
@@ -54,15 +52,12 @@ public class CombatCalc : MonoBehaviour {
         }
         else if (colliderName.Contains("Building")) // Losing Side is a Building
         {
-            print("Building Destroyed");
             Destroy(collider);
         }
     }
 
     private void FleetVsBuilding(GameObject curFleet, string curFleetName, Collider collider, string colliderName, Fleet myFleet, string victorP)
     {
-        print("Fleet vs Building");
-
         if(curFleetName.Contains("Fleet") && !curFleetName.Contains(victorP)) // Check that the loser is a Fleet
         {
             MoveLosingFleet(myFleet, curFleet, victorP);
@@ -79,7 +74,6 @@ public class CombatCalc : MonoBehaviour {
         }
         else if (colliderName.Contains("Building")) // Losing Side is a Building
         {
-            print("Building Destroyed");
             Destroy(collider.gameObject);
         }
     }
