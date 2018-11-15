@@ -107,13 +107,35 @@ public class Fleet : PlayerPawn
     //Fleet Collision, register Box Fleet Colliders, then decide whether it's frendlies or foes
     private void OnTriggerEnter(Collider col)
     {
-        print("Fleet Trigger");
+        print("Fleet Trigger Enter");
         // Current and Collider Fleet Names and Numbers
+        StartCoroutine("WaitTime", col); // Coroutine is used to delay the next function
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        print("Fleet Trigger Exit");
+        // Current and Collider Fleet Names and Numbers
+        CallCollision(col);
+    }
+
+    IEnumerator WaitTime(Collider col) // this Coroutine waits a second, before continuing with the combat, the the fleets collide (important for after the fight)
+    {
+        print("wait");
+        yield return new WaitForSeconds(1); //Count is the amount of time in seconds that you want to wait.
+        CallCollision(col);
+        print("CallCol");
+        yield return null;
+    }
+
+    private void CallCollision(Collider col) // Calling the script handling collisions and combat
+    {
         string curFleetName = gameObject.name;
         int curFleetNum = fleetNumber;
         string colFleetName = col.gameObject.name;
         
         fleetCollision.FleetCollider(col, gameObject, curFleetName, curFleetNum, colFleetName, fleetPostAction, currentPath, tileX, tileZ);
+        
     }
 
     public void MoveOnTurn()

@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usePersistentDataPath: 0
-  saveGamePath: C:\Users\HVossi92\Documents\AwakeningEmpires\SaveGames
+  saveGamePath: C:\Users\vossk\Documents\AwakeningEmpires\SaveGames
   quickSaveName: QuickSave
   debugController:
     gameSaved: 1
