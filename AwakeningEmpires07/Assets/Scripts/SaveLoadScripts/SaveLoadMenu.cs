@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 public class SaveLoadMenu : MonoBehaviour {
 
 	public SaveLoadUtility slu;
-	public bool showMenu = true;
+	public bool showMenu = false;
 	public bool showSave = false;
 	public bool showLoad = false;
 	private string saveGameName;

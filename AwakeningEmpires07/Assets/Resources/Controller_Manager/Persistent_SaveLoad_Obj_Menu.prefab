@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slu: {fileID: 114960981809440922}
-  showMenu: 1
+  showMenu: 0
   showSave: 0
   showLoad: 0
   saveGames: []
