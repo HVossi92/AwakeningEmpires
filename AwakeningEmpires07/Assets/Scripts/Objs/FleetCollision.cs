@@ -14,7 +14,7 @@ public class FleetCollision : MonoBehaviour
     private PlayerController playerController;
     private GameObject sluObj;
     private SaveLoadUtility slu;
-
+    
     private void Start()
     {
         reassignGameObjs();
@@ -28,7 +28,7 @@ public class FleetCollision : MonoBehaviour
             // Friendly Fleets or enemy Fleets
             if ((curFleetName.Contains("_P1") && colFleetName.Contains("_P1")) || (curFleetName.Contains("_P2") && colFleetName.Contains("_P2")))
             {
-                FriendlyFleetMerge(col, curFleetNum, colFleetNum);
+                FriendlyFleetMerge(curFleet, col, curFleetNum, colFleetNum);
             }
             else // Enemy Fleets, engage in combat
             {
@@ -66,13 +66,13 @@ public class FleetCollision : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    private void FriendlyFleetMerge(Collider col, int curFleetNum, int colFleetNum = 0)
+    private void FriendlyFleetMerge(GameObject curFleet, Collider col, int curFleetNum, int colFleetNum = 0)
     {
         // Friendly Fleets merge
         // Since I only want to destroy one fleet, this will only take action for the fleet with the lower number in the unity Hierachy (maybe change it to a private in inside the fleet script?)
         if (curFleetNum < colFleetNum)
         {
-            GameObject shipHolder = gameObject.transform.GetChild(1).gameObject;
+            GameObject shipHolder = curFleet.transform.GetChild(1).gameObject;
             List<GameObject> shipChildren = shipChildrenCollect.ShipChildrenList(shipHolder);
             // while loop through the shipChildren Array and move everyone into the new fleet
             int x = 0;
@@ -84,7 +84,7 @@ public class FleetCollision : MonoBehaviour
             }
 
             // All ships have been moved into the new fleet, destroy the old one
-            Destroy(gameObject);
+            Destroy(curFleet);
         }
     }
 

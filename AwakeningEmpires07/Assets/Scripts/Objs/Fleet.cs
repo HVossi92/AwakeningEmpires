@@ -8,7 +8,7 @@ public class Fleet : PlayerPawn
 {
 
     public int tileX;
-    public int tileZ;    
+    public int tileZ;
     [DontSaveMember] private GameObject mapObj;
     [DontSaveMember] private GameObject nextTurnObj;
     [DontSaveMember] private NextTurnBTN2 nextTurnBTN2;
@@ -26,7 +26,7 @@ public class Fleet : PlayerPawn
     [DontSaveMember] ShipChildrenCollect shipChildrenCollect;
     [DontSaveMember] CombatCalc combatCalc;
     [DontSaveMember] GameObject shipHolder;
-   // [DontSaveMember] List<GameObject> shipChildren;
+    // [DontSaveMember] List<GameObject> shipChildren;
 
     public int fleetNumber;
     private GameObject sluObj;
@@ -48,23 +48,23 @@ public class Fleet : PlayerPawn
     private void Awake()
     {
         PlayerPawnStartInit();
-        reassignGameObjs();        
+        reassignGameObjs();
     }
 
     private void Start()
-    {        
+    {
         // Load in SaveLoad Utility
         if (slu == null)
         {
             sluObj = GameObject.Find("Persistent_SaveLoad_Obj_Menu");
-            slu = sluObj.GetComponent<SaveLoadUtility>();            
+            slu = sluObj.GetComponent<SaveLoadUtility>();
 
             if (slu == null)
             {
                 Debug.Log("[SaveLoadMenu] Start(): Warning! SaveLoadUtility not assigned!");
             }
         }
- 
+
         curGameRound = nextTurnBTN2.GetComponent<NextTurnBTN2>().gameRound;
         tileX = (int)transform.position.x;
         tileZ = (int)transform.position.z;
@@ -130,12 +130,14 @@ public class Fleet : PlayerPawn
 
     private void CallCollision(Collider col) // Calling the script handling collisions and combat
     {
-        string curFleetName = gameObject.name;
-        int curFleetNum = fleetNumber;
-        string colFleetName = col.gameObject.name;
-        
-        fleetCollision.FleetCollider(col, gameObject, curFleetName, curFleetNum, colFleetName, fleetPostAction, currentPath, tileX, tileZ);
-        
+        if (col != null)
+        {
+            string curFleetName = gameObject.name;
+            int curFleetNum = fleetNumber;
+            string colFleetName = col.gameObject.name;
+
+            fleetCollision.FleetCollider(col, gameObject, curFleetName, curFleetNum, colFleetName, fleetPostAction, currentPath, tileX, tileZ);
+        }
     }
 
     public void MoveOnTurn()
@@ -198,6 +200,6 @@ public class Fleet : PlayerPawn
         fleetCombatInfo = fleetCombatInfoObj.GetComponent<FleetCombatInfo>();
 
         shipChildrenCollect = playerController.GetComponent<ShipChildrenCollect>();
-        combatCalc = playerController.GetComponent<CombatCalc>();        
+        combatCalc = playerController.GetComponent<CombatCalc>();
     }
 }

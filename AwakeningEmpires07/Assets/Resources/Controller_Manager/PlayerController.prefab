@@ -22,6 +22,9 @@ GameObject:
   - component: {fileID: 114917219836483520}
   - component: {fileID: 114048761640493162}
   - component: {fileID: 114549311736063360}
+  - component: {fileID: 114970207736817750}
+  - component: {fileID: 114899415619222120}
+  - component: {fileID: 114999126626167160}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -64,6 +67,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46273fc06c47d94599f05044d604991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114899415619222120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1685005371353336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b42307ad39d32549acfd1f870d02009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseManagerObj: {fileID: 0}
+  fleetGui: {fileID: 0}
+  guiFighterBtn: {fileID: 1594818999821204, guid: 4120f9b2a31115b46ae5ce8324d2f886,
+    type: 2}
+  guiBomberBtn: {fileID: 1594818999821204, guid: 429fdf5c449007c44b9a3160db6f982b,
+    type: 2}
+  guiCorvetteBtn: {fileID: 1594818999821204, guid: 67d6c7a75889ee54293d2db5a464bdd9,
+    type: 2}
 --- !u!114 &114917219836483520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82,3 +104,25 @@ MonoBehaviour:
   energyTxtP2: {fileID: 0}
   gameRoundTxt: {fileID: 0}
   nextTurnBtn2: {fileID: 0}
+--- !u!114 &114970207736817750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1685005371353336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb18e08c32bbe56429cb82fb1d5c53dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114999126626167160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1685005371353336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f789f630964f8db4ca34f9aa6f162992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
