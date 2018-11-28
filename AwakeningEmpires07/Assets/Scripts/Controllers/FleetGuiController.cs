@@ -47,33 +47,7 @@ public class FleetGuiController : MonoBehaviour
                     print(i);
                     string curShip = shipChildren[i].name;
                     GameObject btn;
-                    Transform parentFolder = fleetGui.transform.GetChild(0).transform;
-                    switch (curShip)
-                    {
-                        case "Fighter(Clone)":
-                            btn = Instantiate(guiFighterBtn, parentFolder, false);
-                            break;
-                        case "Bomber(Clone)":
-                            btn = Instantiate(guiBomberBtn, parentFolder, false);
-                            break;
-                        case "Corvette(Clone)":
-                            btn = Instantiate(guiCorvetteBtn, parentFolder, false);
-                            break;
-                        default:
-                            print("Error instantiating Fleet Gui");
-                            break;
-                    }
-                }
-            }
-            else
-            {
-                fleetGui.SetActive(false);
-                if (fleetGui.transform.childCount > 0)
-                {
-                    for (int i = 0; i < fleetGui.transform.childCount; i++)
-                    {
-                        Destroy(fleetGui.transform.GetChild(i));
-                    }
+                    Transform parentFolder = fleetGui.transform.GetChild(0).transform;                    
                 }
             }
         }
