@@ -80,12 +80,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseManagerObj: {fileID: 0}
   fleetGui: {fileID: 0}
-  guiFighterBtn: {fileID: 1594818999821204, guid: 4120f9b2a31115b46ae5ce8324d2f886,
-    type: 2}
-  guiBomberBtn: {fileID: 1594818999821204, guid: 429fdf5c449007c44b9a3160db6f982b,
-    type: 2}
-  guiCorvetteBtn: {fileID: 1594818999821204, guid: 67d6c7a75889ee54293d2db5a464bdd9,
-    type: 2}
+  fighterObj: {fileID: 0}
+  bomberObj: {fileID: 0}
+  corvetteObj: {fileID: 0}
 --- !u!114 &114917219836483520
 MonoBehaviour:
   m_ObjectHideFlags: 1

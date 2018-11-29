@@ -160,7 +160,7 @@ MonoBehaviour:
   map: {fileID: 0}
   fleetOfPlayer: 0
   mouseObj: {fileID: 0}
-  fleetNumber: 2
+  fleetNumber: 3
 --- !u!114 &114798356383750624
 MonoBehaviour:
   m_ObjectHideFlags: 1

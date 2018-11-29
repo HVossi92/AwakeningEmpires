@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
     private int energyP2 = 0;
     private int mineralTick = 100;
     private int eneryPenalty = 2;
-
+    
     // Use this for initialization
     void Start () {
         GetPlayer();
