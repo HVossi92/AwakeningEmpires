@@ -115,19 +115,26 @@ public class ClickTile : MonoBehaviour {
 
     private void BuildSpaceShip(int rotationPlayer, GameObject spaceShip)
     {
-        GameObject fleetBuild = BuildController.instance.GetFleetBuild();
-        fleet = (GameObject)Instantiate(fleetBuild, transform.position, transform.rotation);
-        fleet.name = fleet.name.Remove(fleet.name.Length - 7); // Remove "Clone"
+        GameObject shipHolder;
+        Vector3 shipHolderPos;
+        NewMethod(out shipHolder, out shipHolderPos);
 
-        GameObject shipHolder = Instantiate(Resources.Load("Spaceships/Ships")) as GameObject;
-        shipHolder.transform.parent = fleet.transform;
-        Vector3 shipHolderPos = new Vector3(fleet.transform.position.x, fleet.transform.position.y + 1f, fleet.transform.position.z);
-        shipHolder.transform.position = shipHolderPos;
-        
         fighter = (GameObject)Instantiate(spaceShip, shipHolderPos, transform.rotation);
         fighter.transform.parent = shipHolder.transform;
 
         shipHolder.transform.rotation = Quaternion.Euler(0, rotationPlayer, 0);
+    }
+
+    private void NewMethod(out GameObject shipHolder, out Vector3 shipHolderPos)
+    {
+        GameObject fleetBuild = BuildController.instance.GetFleetBuild();
+        fleet = (GameObject)Instantiate(fleetBuild, transform.position, transform.rotation);
+        fleet.name = fleet.name.Remove(fleet.name.Length - 7); // Remove "Clone"
+
+        shipHolder = Instantiate(Resources.Load("Spaceships/Ships")) as GameObject;
+        shipHolder.transform.parent = fleet.transform;
+        shipHolderPos = new Vector3(fleet.transform.position.x, fleet.transform.position.y + 1f, fleet.transform.position.z);
+        shipHolder.transform.position = shipHolderPos;
     }
 
     public void BuildFactoryOnTile()

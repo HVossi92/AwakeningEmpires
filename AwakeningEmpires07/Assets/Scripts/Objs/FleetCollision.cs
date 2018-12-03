@@ -16,6 +16,8 @@ public class FleetCollision : MonoBehaviour
     private SaveLoadUtility slu;
     public GameObject fleetPrefabP1;
     public GameObject fleetPrefabP2;
+    public GameObject buildControllerObj;
+    private BuildController buildController;
 
     private void Start()
     {
@@ -90,9 +92,13 @@ public class FleetCollision : MonoBehaviour
         }
     }
 
-    private void FleetSeparate()
+    public void FleetSeparate(GameObject curFleet, Transform fleetPos, int selcFighterCount, int selcBomberCount, int selcCorvetteCount)
     {
-        Instantiate(fleetPrefabP1);
+        print("FleetSeparate");
+        //buildController.GetFleetBuild();
+        GameObject splitFleet = Instantiate(fleetPrefabP1, fleetPos);
+        Collider myCol = splitFleet.GetComponent<Collider>();
+        myCol.enabled = false;
     }
 
     private void reassignGameObjs()
@@ -105,6 +111,8 @@ public class FleetCollision : MonoBehaviour
 
         shipChildrenCollect = playerController.GetComponent<ShipChildrenCollect>();
         combatCalc = playerController.GetComponent<CombatCalc>();
+
+        buildController = buildControllerObj.GetComponent<BuildController>();
 
         // Load in SaveLoad Utility
         if (slu == null)

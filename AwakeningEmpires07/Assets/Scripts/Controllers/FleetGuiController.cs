@@ -64,6 +64,35 @@ public class FleetGuiController : MonoBehaviour
         ActivateFleetGui();
     }
 
+    public int FighterCount
+    {
+        get { return fighterCount; }
+    }
+
+    public int BomberCount
+    {
+        get { return bomberCount; }
+    }
+    public int CorvetteCount
+    {
+        get { return corvetteCount; }
+    }
+
+    public int SelcFighterCount
+    {
+        get { return selcFighterCount; }
+    }
+
+    public int SelcBomberCount
+    {
+        get { return selcBomberCount; }
+    }
+
+    public int SelcCorvetteCount
+    {
+        get { return selcCorvetteCount; }
+    }
+
     private void ActivateFleetGui()
     {
         if (Input.GetMouseButtonUp(0))

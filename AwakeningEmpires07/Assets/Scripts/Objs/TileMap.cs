@@ -15,6 +15,9 @@ public class TileMap : MonoBehaviour {
     public GameObject parentFolder;
     public GameObject homeBaseP1;
     public GameObject homeBaseP2;
+    public GameObject playerController;
+    private FleetGuiController fleetGuiController;
+    private FleetCollision fleetCollission;
 
     int mapSizeX = 19;
     int mapSizeZ = 19;
@@ -22,7 +25,9 @@ public class TileMap : MonoBehaviour {
     // Get other Scripts before void Start
     private void Awake()
     {
-        mouseManager = mouseObject.GetComponent<MouseManager>();        
+        mouseManager = mouseObject.GetComponent<MouseManager>();
+        fleetGuiController = playerController.GetComponent<FleetGuiController>();
+        fleetCollission = playerController.GetComponent<FleetCollision>();
     }
 
     // Use this for initialization (Setting up the tile map)
@@ -207,12 +212,24 @@ public class TileMap : MonoBehaviour {
 
     // Fleet Movement to Mouse Click
     public void GenerateFleetPathTo(int x, int z)
-    {
-        print("fleetpath");
+    {        
         if (selectedFleet != null)
         {
             //Clear Fleet's old path
             selectedFleet.GetComponent<Fleet>().currentPath = null;
+
+            int selcFighterCount = fleetGuiController.SelcFighterCount;
+            int selcBomberCount = fleetGuiController.SelcBomberCount;
+            int selcCorvetteCount = fleetGuiController.SelcCorvetteCount;
+            int FighterCount = fleetGuiController.FighterCount;
+            int BomberCount = fleetGuiController.BomberCount;
+            int CorvetteCount = fleetGuiController.CorvetteCount;
+
+            if ((selcFighterCount > 0 || selcBomberCount > 0 || selcCorvetteCount > 0) && (FighterCount + BomberCount + CorvetteCount) > 1)
+            {
+                GameObject splitFleet = new GameObject();
+                fleetCollission.FleetSeparate(selectedFleet, selectedFleet.transform, selcFighterCount, selcBomberCount, selcCorvetteCount);
+            }
 
             if (!FleetCanEnterTile(x, z))
             {

@@ -86,6 +86,7 @@ MonoBehaviour:
   selcFighterObj: {fileID: 0}
   selcBomberObj: {fileID: 0}
   selcCorvetteObj: {fileID: 0}
+  buildControllerObj: {fileID: 0}
 --- !u!114 &114917219836483520
 MonoBehaviour:
   m_ObjectHideFlags: 1

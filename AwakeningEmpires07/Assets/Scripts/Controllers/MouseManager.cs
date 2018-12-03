@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,92 +52,100 @@ public class MouseManager : MonoBehaviour {
         // Select objects by cklicking (on a hovered over Object)
         if (Input.GetMouseButton(0))
         {
-            // Hide Building Ui Panel
-            if (hitObject.name != "TileConstruction_P1" && hitObject.name != "TileConstruction_P2")
+            try
             {
-               buildingTileUI.Hide();
-            }
-            // Hide Shipyard Ui Panel
-            if (hitObject.name != "TileShipYardPlayer1" && hitObject.name != "TileShipYardPlayer2")
-            {                
-                shipyardTileUI.Hide();
-            }
-
-            if (hitObject.name == "NextTurnBTN2")
-            {
-                ClearSelectedSelection();
-            }
-            else { 
-
-                GetPlayer();
-                int playerNumber = (int) char.GetNumericValue(hoverObject.name[hoverObject.name.Length - 1]);
-                
-                if (hoverObject.name.Contains("_P1") && hoverObject.name.Contains("Fleet") && activePlayer == 1)
+                // Hide Building Ui Panel
+                if (hitObject.name != "TileConstruction_P1" && hitObject.name != "TileConstruction_P2")
                 {
-                    CommandBatchSelectObj();
+                    buildingTileUI.Hide();
                 }
-                else if (hoverObject.name.Contains("_P2") && hoverObject.name.Contains("Fleet") && activePlayer == 2)
+                // Hide Shipyard Ui Panel
+                if (hitObject.name != "TileShipYardPlayer1" && hitObject.name != "TileShipYardPlayer2")
                 {
-                    CommandBatchSelectObj();
+                    shipyardTileUI.Hide();
                 }
 
-                if ((playerNumber == activePlayer) && !hoverObject.name.Contains("Fleet"))
+                if (hitObject.name == "NextTurnBTN2")
                 {
-                    CommandBatchSelectObj();
-                }
-            }
-
-            if (hitObject.name == "BTN_Factory")
-            {
-                clickTile = selectedObject.GetComponent<ClickTile>();
-                clickTile.BuildFactoryOnTile();
-            }
-            else if (hitObject.name == "BTN_Turret")
-            {
-                clickTile = selectedObject.GetComponent<ClickTile>();
-                clickTile.BuildTurretOnTile();
-            }
-            else if (hitObject.name == "BTN_Solar")
-            {
-                clickTile = selectedObject.GetComponent<ClickTile>();
-                clickTile.BuildSolarOnTile();
-            }
-            else if (hitObject.name == "BTN_Fighter")
-            {
-                clickTile = selectedObject.GetComponent<ClickTile>();
-                if(activePlayer == 1)
-                {
-                    clickTile.BuildFighterOnTile(90);
+                    ClearSelectedSelection();
                 }
                 else
                 {
-                    clickTile.BuildFighterOnTile(-90);
+
+                    GetPlayer();
+                    int playerNumber = (int)char.GetNumericValue(hoverObject.name[hoverObject.name.Length - 1]);
+
+                    if (hoverObject.name.Contains("_P1") && hoverObject.name.Contains("Fleet") && activePlayer == 1)
+                    {
+                        CommandBatchSelectObj();
+                    }
+                    else if (hoverObject.name.Contains("_P2") && hoverObject.name.Contains("Fleet") && activePlayer == 2)
+                    {
+                        CommandBatchSelectObj();
+                    }
+
+                    if ((playerNumber == activePlayer) && !hoverObject.name.Contains("Fleet"))
+                    {
+                        CommandBatchSelectObj();
+                    }
                 }
-                
+
+                if (hitObject.name == "BTN_Factory")
+                {
+                    clickTile = selectedObject.GetComponent<ClickTile>();
+                    clickTile.BuildFactoryOnTile();
+                }
+                else if (hitObject.name == "BTN_Turret")
+                {
+                    clickTile = selectedObject.GetComponent<ClickTile>();
+                    clickTile.BuildTurretOnTile();
+                }
+                else if (hitObject.name == "BTN_Solar")
+                {
+                    clickTile = selectedObject.GetComponent<ClickTile>();
+                    clickTile.BuildSolarOnTile();
+                }
+                else if (hitObject.name == "BTN_Fighter")
+                {
+                    clickTile = selectedObject.GetComponent<ClickTile>();
+                    if (activePlayer == 1)
+                    {
+                        clickTile.BuildFighterOnTile(90);
+                    }
+                    else
+                    {
+                        clickTile.BuildFighterOnTile(-90);
+                    }
+
+                }
+                else if (hitObject.name == "BTN_Bomber")
+                {
+                    clickTile = selectedObject.GetComponent<ClickTile>();
+                    if (activePlayer == 1)
+                    {
+                        clickTile.BuildBomberOnTile(90);
+                    }
+                    else
+                    {
+                        clickTile.BuildBomberOnTile(-90);
+                    }
+                }
+                else if (hitObject.name == "BTN_Corvette")
+                {
+                    clickTile = selectedObject.GetComponent<ClickTile>();
+                    if (activePlayer == 1)
+                    {
+                        clickTile.BuildCorvetteOnTile();
+                    }
+                    else
+                    {
+                        clickTile.BuildCorvetteOnTile(-180);
+                    }
+                }
             }
-            else if (hitObject.name == "BTN_Bomber")
+            catch (Exception e)
             {
-                clickTile = selectedObject.GetComponent<ClickTile>();
-                if (activePlayer == 1)
-                {
-                    clickTile.BuildBomberOnTile(90);
-                }
-                else
-                {
-                    clickTile.BuildBomberOnTile(-90);
-                }
-            }
-            else if (hitObject.name == "BTN_Corvette")
-            {
-                clickTile = selectedObject.GetComponent<ClickTile>();
-                if (activePlayer == 1)
-                {
-                    clickTile.BuildCorvetteOnTile();
-                }
-                else
-                {
-                    clickTile.BuildCorvetteOnTile(-180);
-                }
+                Debug.Log(e);
             }
         }
     }

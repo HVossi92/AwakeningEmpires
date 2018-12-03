@@ -104,3 +104,4 @@ MonoBehaviour:
     type: 2}
   homeBaseP1: {fileID: 1486927473885564, guid: 23c24903d2854c24b88101b8e54b14a3, type: 2}
   homeBaseP2: {fileID: 1337762545128850, guid: 616eed066ecda454bb6ef0ebd6019625, type: 2}
+  playerController: {fileID: 0}
