@@ -18,7 +18,6 @@ public class MouseManager : MonoBehaviour {
     void Start () {
         _Camera = FindObjectOfType<Camera>();
         reassignGameObjs();
-
     }
 
     // Update is called once per frame

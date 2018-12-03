@@ -37,14 +37,6 @@ public class Fleet : PlayerPawn
         return 2;
     }
 
-    private void OnMouseOver()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            map.GenerateFleetPathTo(tileX, tileZ);
-        }
-    }
-
     private void Awake()
     {
         PlayerPawnStartInit();

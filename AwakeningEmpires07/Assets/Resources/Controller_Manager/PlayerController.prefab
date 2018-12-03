@@ -83,6 +83,9 @@ MonoBehaviour:
   fighterObj: {fileID: 0}
   bomberObj: {fileID: 0}
   corvetteObj: {fileID: 0}
+  selcFighterObj: {fileID: 0}
+  selcBomberObj: {fileID: 0}
+  selcCorvetteObj: {fileID: 0}
 --- !u!114 &114917219836483520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,6 +115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb18e08c32bbe56429cb82fb1d5c53dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fleetPrefabP1: {fileID: 1568959929957350, guid: 3873ae184aa2cdb44a0029f4ae1b6c86,
+    type: 2}
+  fleetPrefabP2: {fileID: 1568959929957350, guid: 6e764234bec38084da876fee5fe6e166,
+    type: 2}
 --- !u!114 &114999126626167160
 MonoBehaviour:
   m_ObjectHideFlags: 1

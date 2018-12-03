@@ -14,7 +14,9 @@ public class FleetCollision : MonoBehaviour
     private PlayerController playerController;
     private GameObject sluObj;
     private SaveLoadUtility slu;
-    
+    public GameObject fleetPrefabP1;
+    public GameObject fleetPrefabP2;
+
     private void Start()
     {
         reassignGameObjs();
@@ -86,6 +88,11 @@ public class FleetCollision : MonoBehaviour
             // All ships have been moved into the new fleet, destroy the old one
             Destroy(curFleet);
         }
+    }
+
+    private void FleetSeparate()
+    {
+        Instantiate(fleetPrefabP1);
     }
 
     private void reassignGameObjs()

@@ -208,6 +208,7 @@ public class TileMap : MonoBehaviour {
     // Fleet Movement to Mouse Click
     public void GenerateFleetPathTo(int x, int z)
     {
+        print("fleetpath");
         if (selectedFleet != null)
         {
             //Clear Fleet's old path
