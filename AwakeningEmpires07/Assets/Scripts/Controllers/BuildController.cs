@@ -149,6 +149,20 @@ public class BuildController : MonoBehaviour {
         }           
     }
 
+    public GameObject InstantiateFleet(Transform fleetPos)
+    {
+        GameObject fleetBuild = GetFleetBuild();
+        GameObject fleet = (GameObject)Instantiate(fleetBuild, fleetPos);
+        fleet.name = fleet.name.Remove(fleet.name.Length - 7); // Remove "Clone"
+
+        GameObject shipHolder = Instantiate(Resources.Load("Spaceships/Ships")) as GameObject;
+        shipHolder.transform.parent = fleet.transform;
+        Vector3 shipHolderPos = new Vector3(fleet.transform.position.x, fleet.transform.position.y + 1f, fleet.transform.position.z);
+        shipHolder.transform.position = shipHolderPos;
+
+        return fleet;
+    }
+
     public GameObject GetFighterBuild()
     {
      playerController.mineralExpense(_fighterCost);

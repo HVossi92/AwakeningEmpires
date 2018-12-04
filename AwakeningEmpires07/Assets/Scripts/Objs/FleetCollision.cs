@@ -94,11 +94,12 @@ public class FleetCollision : MonoBehaviour
 
     public void FleetSeparate(GameObject curFleet, Transform fleetPos, int selcFighterCount, int selcBomberCount, int selcCorvetteCount)
     {
-        print("FleetSeparate");
-        //buildController.GetFleetBuild();
-        GameObject splitFleet = Instantiate(fleetPrefabP1, fleetPos);
-        Collider myCol = splitFleet.GetComponent<Collider>();
+        GameObject fleet = buildController.InstantiateFleet(fleetPos);
+        Fleet myFleet = fleet.GetComponent<Fleet>();
+        myFleet.justSeparated = true;
+        Collider myCol = fleet.GetComponent<Collider>();
         myCol.enabled = false;
+        fleet.transform.parent = null;
     }
 
     private void reassignGameObjs()

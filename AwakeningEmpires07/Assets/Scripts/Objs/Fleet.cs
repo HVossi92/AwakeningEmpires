@@ -26,6 +26,8 @@ public class Fleet : PlayerPawn
     [DontSaveMember] ShipChildrenCollect shipChildrenCollect;
     [DontSaveMember] CombatCalc combatCalc;
     [DontSaveMember] GameObject shipHolder;
+    public bool justSeparated = false;
+    private int gameRoundSeparated;
     // [DontSaveMember] List<GameObject> shipChildren;
 
     public int fleetNumber;
@@ -45,6 +47,7 @@ public class Fleet : PlayerPawn
 
     private void Start()
     {
+        gameRoundSeparated = curGameRound;
         // Load in SaveLoad Utility
         if (slu == null)
         {
@@ -64,6 +67,8 @@ public class Fleet : PlayerPawn
 
     private void Update()
     {
+        ActivateColliderAfterSeparation();
+
         fleetPostAction = fleetCombatInfo.fleetPostAction;
         if (nextTurnObj == null)
         {
@@ -94,6 +99,18 @@ public class Fleet : PlayerPawn
         // Smoothly animate towards the correct map tile
         //transform.position = Vector3.Lerp(transform.position, map.TileCoordToWorldCoord(tileX, tileZ), 5 * Time.deltaTime);
         transform.position = Vector3.MoveTowards(transform.position, map.TileCoordToWorldCoord(tileX, tileZ), 5f * Time.deltaTime);
+    }
+
+    private void ActivateColliderAfterSeparation()
+    {
+        print(curGameRound);
+        print(gameRoundSeparated + 2);
+        if (justSeparated && curGameRound == gameRoundSeparated + 2)
+        {
+            print("after");
+            Collider myCol = gameObject.GetComponent<Collider>();
+            myCol.enabled = true;
+        }
     }
 
     //Fleet Collision, register Box Fleet Colliders, then decide whether it's frendlies or foes

@@ -917,6 +917,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114970207736817750, guid: f2ce94955eabf6a45a1ab2fc17457c3c,
+        type: 2}
+      propertyPath: buildControllerObj
+      value: 
+      objectReference: {fileID: 1244207187}
     - target: {fileID: 114899415619222120, guid: f2ce94955eabf6a45a1ab2fc17457c3c,
         type: 2}
       propertyPath: mouseManagerObj

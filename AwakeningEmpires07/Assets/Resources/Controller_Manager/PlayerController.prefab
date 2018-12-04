@@ -86,7 +86,6 @@ MonoBehaviour:
   selcFighterObj: {fileID: 0}
   selcBomberObj: {fileID: 0}
   selcCorvetteObj: {fileID: 0}
-  buildControllerObj: {fileID: 0}
 --- !u!114 &114917219836483520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,6 +119,7 @@ MonoBehaviour:
     type: 2}
   fleetPrefabP2: {fileID: 1568959929957350, guid: 6e764234bec38084da876fee5fe6e166,
     type: 2}
+  buildControllerObj: {fileID: 0}
 --- !u!114 &114999126626167160
 MonoBehaviour:
   m_ObjectHideFlags: 1
