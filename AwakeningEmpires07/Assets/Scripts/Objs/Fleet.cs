@@ -103,8 +103,6 @@ public class Fleet : PlayerPawn
 
     private void ActivateColliderAfterSeparation()
     {
-        print(curGameRound);
-        print(gameRoundSeparated + 2);
         if (justSeparated && curGameRound == gameRoundSeparated + 2)
         {
             print("after");
@@ -116,14 +114,12 @@ public class Fleet : PlayerPawn
     //Fleet Collision, register Box Fleet Colliders, then decide whether it's frendlies or foes
     private void OnTriggerEnter(Collider col)
     {
-        print("Fleet Trigger Enter");
         // Current and Collider Fleet Names and Numbers
         StartCoroutine("WaitTime", col); // Coroutine is used to delay the next function
     }
 
     private void OnTriggerExit(Collider col)
     {
-        print("Fleet Trigger Exit");
         // Current and Collider Fleet Names and Numbers
         CallCollision(col);
     }

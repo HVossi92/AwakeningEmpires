@@ -100,6 +100,53 @@ public class FleetCollision : MonoBehaviour
         Collider myCol = fleet.GetComponent<Collider>();
         myCol.enabled = false;
         fleet.transform.parent = null;
+
+        GameObject shipHolder = curFleet.transform.GetChild(1).gameObject;
+        List<GameObject> shipChildren = shipChildrenCollect.ShipChildrenList(shipHolder);
+        // while loop through the shipChildren Array and move everyone into the new fleet
+        int i = 0;
+        while (shipHolder.transform.childCount > i)
+        {
+            print("F" + selcFighterCount);
+            print("B" + selcBomberCount);
+
+            if (shipChildren[i].name == "Fighter(Clone)" && selcFighterCount <= 0)
+            {
+                shipChildren[i].transform.parent = myFleet.transform.GetChild(1);
+                shipChildren[i].transform.position = myFleet.transform.GetChild(1).transform.position;
+            }
+            else if (shipChildren[i].name == "Bomber(Clone)" && selcBomberCount <= 0)
+            {
+                shipChildren[i].transform.parent = myFleet.transform.GetChild(1);
+                shipChildren[i].transform.position = myFleet.transform.GetChild(1).transform.position;
+            }
+            else if (shipChildren[i].name == "Corvette(Clone)" && selcCorvetteCount <= 0)
+            {
+                shipChildren[i].transform.parent = myFleet.transform.GetChild(1);
+                shipChildren[i].transform.position = myFleet.transform.GetChild(1).transform.position;
+            }
+
+            switch (shipChildren[i].name)
+            {
+                case "Fighter(Clone)":
+                    selcFighterCount--;
+                    break;
+                case "Bomber(Clone)":
+                    selcBomberCount--;
+                    break;
+                case "Corvette(Clone)":
+                    selcCorvetteCount--;
+                    break;
+                default:
+                    print("Switch Error");
+                    break;
+            }
+            
+            i++;
+        }
+
+        /* Anzahl Schiffe die ich mitnehmen will kommt rein. Die Flotte bleibt stehen, brauche also den rest, der nicht mitkommt. Shipholder, Schiffe loopen.
+         * Wenn die Anzahl groesser ist, als der input Count, kommen diese in die neue Flotte, die stehen bleibt */
     }
 
     private void reassignGameObjs()
