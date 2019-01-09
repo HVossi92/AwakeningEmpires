@@ -189,4 +189,4 @@ MonoBehaviour:
   fleetOfPlayer: 0
   mouseObj: {fileID: 0}
   justSeparated: 0
-  fleetNumber: 3
+  fleetNumber: 1

@@ -78,8 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b42307ad39d32549acfd1f870d02009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fleetGuiPrefab: {fileID: 1179998756702888, guid: 3a0d5bad3a63ada4aa2bbdab23d724ea,
+    type: 2}
+  canvas: {fileID: 0}
   mouseManagerObj: {fileID: 0}
-  fleetGui: {fileID: 0}
   fighterObj: {fileID: 0}
   bomberObj: {fileID: 0}
   corvetteObj: {fileID: 0}

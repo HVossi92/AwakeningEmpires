@@ -20,18 +20,19 @@ public class CombatCalc : MonoBehaviour {
         string victorP = "P2"; // Placeholder
         myFleet.currentPath = null;
 
-        if (!colliderName.Contains("Building"))
+        if (colliderName.Contains("Building") || curFleetName.Contains("Building"))
         {
-            FleetVsFleet(curFleet, curFleetName, collider, colliderName, myFleet, victorP);
+            FleetVsBuilding(curFleet, curFleetName, collider, colliderName, myFleet, victorP);
         }
         else
         {
-            FleetVsBuilding(curFleet, curFleetName, collider, colliderName, myFleet, victorP);
+            FleetVsFleet(curFleet, curFleetName, collider, colliderName, myFleet, victorP);            
         }
     }
 
     private void FleetVsFleet(GameObject curFleet, string curFleetName, Collider collider, string colliderName, Fleet myFleet, string victorP)
     {
+        print("Battle_Fleet");
         if (curFleetName.Contains(victorP))
         {
             return;
@@ -58,6 +59,7 @@ public class CombatCalc : MonoBehaviour {
 
     private void FleetVsBuilding(GameObject curFleet, string curFleetName, Collider collider, string colliderName, Fleet myFleet, string victorP)
     {
+        print("Battle_Building)");
         if(curFleetName.Contains("Fleet") && !curFleetName.Contains(victorP)) // Check that the loser is a Fleet
         {
             MoveLosingFleet(myFleet, curFleet, victorP);

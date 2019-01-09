@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class FleetGuiController : MonoBehaviour
 {
+    public GameObject fleetInventoryPrefab;
+    public GameObject canvas;
+
     private ShipChildrenCollect shipChildrenCollect;
     public GameObject mouseManagerObj;
     private MouseManager mouseManager;
@@ -38,6 +41,10 @@ public class FleetGuiController : MonoBehaviour
 
     private void Awake()
     {
+      /*  GameObject fleetInventory = Instantiate(fleetInventoryPrefab);
+        fleetInventory.activeSelf = false;
+        fleetInventory.transform.parent = canvas.transform;*/
+
         shipChildrenCollect = gameObject.GetComponent<ShipChildrenCollect>();
         mouseManager = mouseManagerObj.GetComponent<MouseManager>();
 
